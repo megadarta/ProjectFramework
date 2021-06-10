@@ -1,0 +1,14 @@
+.cardproduk-home{
+    padding: 0 100px 0 100px;
+}
+.btn-beli{
+    background-color: #B66043;
+    border: none;
+    box-shadow: none;
+}
+
+.btn-beli:hover{
+    background-color: #B66043!important;
+    border: none!important;
+    box-shadow: none;
+}

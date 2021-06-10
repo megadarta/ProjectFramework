@@ -1,0 +1,45 @@
+.searchtxt {
+    width: 53vw!important;
+    border-radius: 0!important;
+}
+
+.searchbar {
+    /* outline: 3px solid #529F1F; */
+}
+
+.searchbtn:hover {
+    border-color: #B66043;
+    background-color: #B66043!important;
+}
+
+.dosar-nav {
+    background-color: white;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+}
+
+.searchbtn {
+    border-color: #B66043;
+    background-color: #B66043!important;
+    border-radius: 0!important;
+}
+
+.dropdown-menu {
+    left: -100px!important;
+}
+
+.cart {
+    margin-right: 60px;
+}
+
+@media (max-width: 1310px) {
+    .searchtxt {
+        width: 40vw!important;
+    }
+}
+
+@media (max-width: 1030px) {
+    .searchtxt {
+        width: auto!important;
+    }
+}
+
