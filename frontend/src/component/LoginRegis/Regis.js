@@ -1,10 +1,12 @@
 import React from 'react';
 import '../../css/Regis.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faInstagram, faFacebook} from '@fortawesome/fontawesome-free-brands';
 
 function Regis() {
 return (
 	<div class="container" id="container">
-		<div class="form-container log-in-container">
+		<div class="form-container regis log-in-container">
 				<h1>Register</h1>
                 <br/>
                 <span>Please Register Your Identity</span>
@@ -15,8 +17,8 @@ return (
                 
                 <span>Please Register Your Identity</span>
                 <hr/>
-					<a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
-					<a href="#" class="social"><i class="fab fa fa-twitter fa-2x"></i></a>
+					<a href="#" class="social"><FontAwesomeIcon className ='font-awesome' icon={faFacebook} /></a>
+					<a href="#" class="social"><FontAwesomeIcon className ='font-awesome' icon={faInstagram} /></a>
 				</div>
 
                 <label for="username" class="col-sm-2 col-form-label"></label>
@@ -26,15 +28,15 @@ return (
                 <label for="password" class="col-sm-2 col-form-label"></label>
                 <input type="password" class="form-control" id="password" name="pasword" placeholder="Password" />
                         <a href="#">Forgot your password?</a>
-                        <a href="login.php" class="btn btn-success">Login</a>
-                        <button type="submit" class="btn btn-primary" name="register">Register</button>
+						<button type="submit" class="btn btn-primary regis" name="register">Register</button>
+                        <a href="/login" class="btn btn-success regis">LOGIN</a>
+                        
 			</form>
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
-				<h1>NgeThrift</h1>
-					<p></p>
+				<div className="boxT"><h1>Thrift-In</h1></div>
 				</div>
 			</div>
 		</div>

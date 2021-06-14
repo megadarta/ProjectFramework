@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
 	box-sizing: border-box;
@@ -39,6 +39,7 @@ a {
 	margin: 15px 0;
 }
 
+
 button {
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
@@ -50,10 +51,12 @@ button {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 /*	transition: transform 80ms ease-in; */
-/* } */
+}
 
 
 form {
+	position: relative;
+	margin-top: 9rem;
 	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;
@@ -64,13 +67,13 @@ form {
 	text-align: center;
 }
 
-/* input {
+input {
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
-} */
+}
 
 .container {
 	background-color: #fff;
@@ -83,9 +86,9 @@ form {
 	min-height: 530px;
 }
 
-.form-container {
+.form-container.regis {
 	position: absolute;
-	top: -150px;
+	top: -19.5rem;
 	height: 120%;
 }
 
@@ -134,7 +137,7 @@ form {
 }
 
 .social-container {
-	margin: 50px 0;
+	margin: 0px 0;
 }
 
 .social-container a {
@@ -146,4 +149,11 @@ form {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+.btn.btn-primary.regis{
+	width: 100%;
+}
+.btn.btn-success.regis{
+	width: 100%;
+	
 }

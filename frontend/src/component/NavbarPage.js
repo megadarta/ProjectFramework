@@ -53,7 +53,7 @@ function NavbarPage() {
                                             id="basic-nav-dropdown">
                                       
                                         <NavDropdown.Item href="/transactions">Riwayat Transaksi</NavDropdown.Item>
-                                        <NavDropdown.Item href="/" >Logout</NavDropdown.Item>
+                                        <NavDropdown.Item href="/login" >Logout</NavDropdown.Item>
                                         {/* <NavDropdown.Divider />
                                         <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item> */}
                                     </NavDropdown>
