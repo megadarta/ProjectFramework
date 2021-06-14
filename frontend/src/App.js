@@ -11,6 +11,7 @@ import {
 import Konfirmasi from './component/Konfirmasi';
 import Pembayaran from './component/Pembayaran/Pembayaran';
 import Admin from './component/admin/Admin';
+import CreateProduk from './component/admin/CreateProduk';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/admin">
               <Admin />
+          </Route>
+          <Route path="/create-produk">
+              <CreateProduk />
           </Route>
         </Switch>
       </Router>

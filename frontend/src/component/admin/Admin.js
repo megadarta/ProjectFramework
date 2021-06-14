@@ -1,10 +1,11 @@
 import React from 'react';
 import '../../css/admin.css';
+import ListPesanan from './ListPesanan';
 
 function Admin() {
 return (
     <div className="">
-        <div className="text-footer"> </div>
+        <ListPesanan />
     </div>
 );
 }

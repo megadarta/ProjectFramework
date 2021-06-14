@@ -1,0 +1,24 @@
+.tabel-pesanan{
+    /* background-color: #EAD9C3; */
+    margin: 50px;
+}
+.kanan-admin-pesanan{
+    width: 100%;
+}
+.table-pesanan{
+    background-color: white;
+}
+.tbody-pesanan{
+    font-size: 12px;
+}
+.thead-pesanan{
+    font-size: 15px;
+}
+.select-status-pesanan{
+    width: 80%;
+}
+@media (max-width: 992px) {
+    .navbaradmin{
+        display: none;
+    }
+ }
