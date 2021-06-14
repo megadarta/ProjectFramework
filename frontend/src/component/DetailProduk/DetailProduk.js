@@ -4,8 +4,8 @@ import NavbarPage from '../NavbarPage';
 import Footer from '../Footer';
 import produk1 from "../../asset/JAKET2.jpg"
 import CardProduk from '../home/CardProduk';
-import {Button} from 'react-bootstrap';
-import {useParams} from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
 function DetailProduk() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -14,23 +14,31 @@ function DetailProduk() {
 
     const [jumlahbeli, setJumlahBeli] = useState(1);
     const [hasiltotal, setHasiltotal] = useState();
-    
+
     useEffect(() => {
         fetch(`http://localhost:3001/tampil?idproduk=${idproduk}`).then(res => res.json()).then(data => {
-        setTampil(data.results)
-        setHasiltotal(data.results[0].harga);
-        console.log(data.results)
-    }
-        
-    );
-    },[])
+            setTampil(data.results)
+            setHasiltotal(data.results[0].harga);
+            console.log(data.results)
+        }
 
-    function tambahjumlah(){
-        setJumlahBeli(jumlahbeli+1);
+        );
+    }, [])
+
+    function tambahjumlah() {
+        setJumlahBeli(jumlahbeli + 1);
+        setHasiltotal((jumlahbeli+1) * tampil[0]?.harga);
+        console.log(tampil[0]?.harga);
+        console.log(jumlahbeli);
     }
-    function kurangjumlah(){
-        if(jumlahbeli > 1 ){
-        setJumlahBeli(jumlahbeli-1);
+    
+    function kurangjumlah() {
+        if (jumlahbeli > 1) {
+            setJumlahBeli(jumlahbeli - 1);
+            setHasiltotal((jumlahbeli-1) * tampil[0]?.harga);
+            console.log(tampil[0]?.harga);
+            console.log(jumlahbeli);
+           
         }
     }
     return (
@@ -72,7 +80,7 @@ function DetailProduk() {
                     <div className="d-flex justify-content-center judul-produk">PRODUK LAINNYA</div>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                         <div className="col"><CardProduk /></div>
-                        
+
                     </div>
                 </div>
             </div>
