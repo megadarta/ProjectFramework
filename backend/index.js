@@ -57,6 +57,27 @@ app.get('/kategori',(req,res) => {
         });
 })
 
+app.post('/regis',(req,res) => {
+    let data = { email: req.body.email,  role: req.body.role, nama_user: req.body.nama_user, alamat: req.body.alamat, no_telepon:req.body.no_telepon };
+    let sql = "INSERT INTO user SET ? ";
+    let query = conn.query(sql, data, (err, results) => {
+        if(err) throw err;
+        res.json({results:results});
+        });
+})
+
+
+app.post('/login',(req,res) => {
+    let data = { email: req.body.email,  role: req.body.role, nama_user: req.body.nama_user, alamat: req.body.alamat, no_telepon:req.body.no_telepon };
+    let sql = "INSERT INTO user SET ? ";
+    let query = conn.query(sql, data, (err, results) => {
+        if(err) throw err;
+        res.json({results:results});
+        });
+})
+
+
 app.listen(3001, () => {
     console.log('Server is running at port 8000');
   });
+
