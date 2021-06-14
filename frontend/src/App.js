@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Konfirmasi from './component/Konfirmasi';
 import Pembayaran from './component/Pembayaran/Pembayaran';
+import Admin from './component/admin/Admin';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/pembayaran">
               <Pembayaran />
+          </Route>
+          <Route path="/admin">
+              <Admin />
           </Route>
         </Switch>
       </Router>

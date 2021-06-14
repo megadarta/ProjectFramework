@@ -6,6 +6,7 @@ import tiga from '../../asset/tiga.png';
 import beli1 from '../../asset/JAKET2.jpg';
 import NavbarPage from '../NavbarPage';
 import Footer from '../Footer';
+import {Button} from 'react-bootstrap';
 
 function Pembayaran() {
     return (
@@ -94,14 +95,21 @@ function Pembayaran() {
                         <div className="ongkos-kirim">Ongkos Kirim : Rp. 10.000</div>
                         <hr></hr>
                         <div className="total-seluruh">Total Keseluruhan : Rp. 280.000</div>
+                        <Button className="btn-beli mt-3 align-center" style={{ width: "50%" }}>BAYAR</Button>
                     </div>
                     </div>
 
                     <div className="bawah-kanan">
-                        <p>
-                            Pembayaraan dapat dilakukan di :
-                            rekening BRI 1912-0097-0983 A.n Ngethriftyuk
-                        </p>
+                        <div className="info-bank-atas"></div>
+                        <div className="info-bank-bawah">
+                            <span>Pembayaraan dapat dilakukan di :</span>
+                            <ul>
+                                <li>BRI : 192-909-000-999 ( a.n NgethriftYuk )</li>
+                                <li>Mandiri : 9898-76879-899 (a.n NgethriftYuk )</li>
+                                <li>BCA : 1298-989-999-888 ( a.n NgethriftYuk )</li>
+                            </ul>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
