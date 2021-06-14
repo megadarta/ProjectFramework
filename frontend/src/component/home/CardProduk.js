@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button} from 'react-bootstrap';
-import gambar from '../asset/DosarLogo.png';
-import'../css/CardProduk.css';
+import gambar from '../../asset/ONESET1.jpg';
+import'../../css/CardProduk.css';
 
 function CardProduk() {
     return (
@@ -12,10 +12,10 @@ function CardProduk() {
                 </a>
                 <Card.Body>
                     <Card.Title className="text-truncate m-0">
-                        <a href="" style={{ fontWeight: "600", fontSize: "16px", color: 'black'}}>BAJU</a>
+                        <a href="" style={{ fontWeight: "600", fontSize: "12px", color: 'black'}}>BAJU</a>
                     </Card.Title>
                     <Card.Text className="mt-3">
-                        <b>Rp. 30.000</b>
+                        <b style={{ fontWeight: "600", fontSize: "14px", color: 'black'}}>Rp. 30.000</b>
             </Card.Text>
                     <Button className="btn-beli" style={{ width: "100%" }}>BELI</Button>
 

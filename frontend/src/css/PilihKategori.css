@@ -1,0 +1,26 @@
+.kategori{
+    padding: 10PX 20px;
+    width: 100%;
+    background-color: #B36A40;
+
+}
+
+.col-kategori{
+    margin: 30px 5px 20px 5px;
+}
+.img-kategori{
+    width: 80px;
+
+}
+.text-kategori{
+    margin-left: 20px;
+    width: 100%;
+    color: #EAD9C3;
+    font-size: 30px;
+}
+a, a:hover{
+    text-decoration: none;
+}
+.row{
+    --bs-gutter-x: 0px!important;
+}

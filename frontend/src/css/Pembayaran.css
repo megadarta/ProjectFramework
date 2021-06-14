@@ -1,0 +1,78 @@
+.icon-pembayaran{
+    width: 35px;
+}
+.alamat {
+    margin-left: 30px;
+    /* margin-bottom: 0px!important; */
+}
+.isian-alamat, .isian-pesanan{
+    border-left: 3px dashed black;
+    margin-left: 16px;
+}
+.textarea-alamat, .file-up{
+    margin-left: 50px;
+    width: 150px;
+}
+.upload-bayar{
+    margin-left: 16px;
+    margin-bottom: 50px;
+}
+.produk-bayar{
+    width: 100px;
+    margin-left: 5px;
+}
+.card-list{
+    /* border: 1px solid black; */
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.nama-produk-beli{
+    font-size: 15px;
+}
+.jumlah-produk-beli{
+    font-size: 10px;
+}
+.total-produk-beli{
+    font-size: 10px;
+}
+.tiga{
+    margin-top: -10px;
+}
+.full{
+    background-color: #E5E5E5;
+}
+.kiri-upload{
+    background-color: white;
+    padding: 30px;
+    margin-top: 50px;
+    width: 70%;
+}
+.kanan-atas{
+    background-color: #B36A40;
+    height: 30px;
+    /* width: 100px; */
+}
+.kanan-bayar{
+    margin-top: 50px;
+    margin-left: 10px;
+    width: 30%;
+    
+}
+.card-info{
+    background-color: white;
+    padding: 20px 50px 30px 50px;
+}
+.detail-pembayaran{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 0px 10px 5px;
+}
+.total-belanja, .ongkos-kirim{
+    font-size: 12px;
+} 
+.total-seluruh{
+    font-size: 15px;
+}
+.bawah-kanan{
+    margin-top: 30px;
+}

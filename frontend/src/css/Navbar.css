@@ -3,8 +3,8 @@
     border-radius: 0!important;
 }
 
-.searchbar {
-    /* outline: 3px solid #529F1F; */
+.searchbar, .searchbar:hover {
+    outline: 3px solid #B66043;
 }
 
 .searchbtn:hover {
@@ -13,13 +13,13 @@
 }
 
 .dosar-nav {
-    background-color: white;
+    background-color: #EAD9C3!important;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
 }
 
 .searchbtn {
-    border-color: #B66043;
-    background-color: #B66043!important;
+    border-color: #B36A40;
+    background-color: #B36A40!important;
     border-radius: 0!important;
 }
 
