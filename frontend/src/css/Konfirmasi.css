@@ -1,0 +1,46 @@
+.konfirmasi{
+    margin-top: 50px;
+    margin-bottom: 195px;
+    width: 100%;
+    
+}
+.atas-konfirmasi{
+    background-color: #B36A40;
+    height: 30px;
+    width: 100%;
+}
+.konfir{
+    width: 50%;
+    border: 1px solid #B36A40;
+}
+.verif{
+    width: 100px;
+    margin-top: 30px;
+}
+.cverif{
+    text-align: center;
+}
+.text-konfirmasi{
+    color: #FF9245;
+    font-weight: bold;
+    width: 200px;
+    margin-top: 15px;
+    font-size: 12px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-konfir{
+    margin-bottom: 20px;
+    margin-top: 10px;
+    background-color: #FFD1CC;
+    border: none;
+    
+}
+.btn-konfir:hover{
+    background-color: #FF9245;
+}
+.btn-konfir-class{
+    text-align: center;
+    margin-bottom: 30px;
+}

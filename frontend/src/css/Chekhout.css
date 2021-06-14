@@ -1,0 +1,34 @@
+.chekout{
+    width: 70%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}.co-atas{
+    background-color: #B36A40;
+    height: 50px;
+    color: white;
+    text-align: center;
+    /* padding-top: auto; */
+}
+.list-dibeli{
+    padding: 20px 100px 50px 100px;
+    border: 1px solid #B36A40;
+}
+.produk-dibeli{
+    margin-top: 20px;
+}
+.harga-co{
+    border: 1px solid #B36A40;
+    margin-top: 30px;
+}
+.btn-co, .btn-co:hover{
+    background-color: #B36A40;
+    border: none;
+}
+.back-co{
+    text-decoration: none;
+    color: #EAD9C3;
+}
+.back-co:hover{
+    text-decoration: none;
+    color: #B36A40;
+}

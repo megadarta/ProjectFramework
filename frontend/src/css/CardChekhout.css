@@ -1,0 +1,38 @@
+.CardChekhout{
+    width: 700px;
+    border: 1px solid #CB9360 ;
+}
+.img-produk-beli{
+    width: 250px;
+    padding-left: auto;
+    padding-right: auto;
+}
+.keterangan-produk-beli{
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nama-produk-dibeli{
+    color: #963212;
+    font-size: 20px;
+}
+.harga-dibeli{
+    margin-top: -15px;
+    font-size: 12px;
+}
+.btn-kuantitas, .value-kuantitas{
+    width: 30px;
+    height: 30px;
+}
+.status-pembelian{
+    width: 250px;
+    margin-top: 30px;
+    color: #963212;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px;
+}
+.text-kuantitas-dibeli{
+    color: #963212;
+    font-size: 10px;
+}

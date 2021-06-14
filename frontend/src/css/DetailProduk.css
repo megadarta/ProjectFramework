@@ -1,0 +1,48 @@
+.detail-produk{
+    width: 60%;
+    margin: 30px auto;
+}
+.img-detail-produk{
+    width: 300px;
+    /* margin-left:auto; */
+    /* margin-right: auto;  */
+}
+.card-detail-atas{
+    background-color: #B36A40;
+    height: 20px;
+}
+.value-kuantitas{
+    text-align: center;
+    width: 50px;
+    margin: 0 10px 0 10px;
+}
+.btn-kuantitas{
+    width: 50px;
+    height: 50px;
+    padding: auto;
+    background-color: #B36A40;
+    color: white;
+}
+.list-detail-produk{
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+}
+.nama-produk-detail{
+    font-size: 30px;
+    margin: 20px 0 10px 0px;
+    color: #F47216;
+    font-weight: bold;
+}
+.btn-beli-detail{
+    margin-top: 30px;
+}
+.harga-detail{
+    color: #FF9245;
+    font-size: 15px;
+}
+.text-kuantitas{
+    color: #CB9360;
+}
+
+

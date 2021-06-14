@@ -2,13 +2,17 @@
     padding: 0 100px 0 100px;
 }
 .btn-beli{
-    background-color: #B66043;
+    background-color: #FFD1CC;
     border: none;
     box-shadow: none;
 }
 
+.product{
+    margin: 5px;
+}
+
 .btn-beli:hover{
-    background-color: #B66043!important;
+    background-color: #FF9245!important;
     border: none!important;
     box-shadow: none;
 }

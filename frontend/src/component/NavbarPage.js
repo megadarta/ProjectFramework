@@ -1,21 +1,21 @@
 import React from 'react';
 import { Form, Navbar, Nav, FormControl, NavDropdown, InputGroup, Button, Image } from 'react-bootstrap';
-import gambar from '../asset/DosarLogo.png';
-import gambartas from '../asset/shopping-bag-icon.png';
+import gambar from '../asset/logo.png';
+import gambartas from '../asset/keranjang.png';
 import mega from '../asset/user.svg';
 import '../css/Navbar.css';
 
 function NavbarPage() {
     return (
-        <Navbar className="p-3 dosar-nav" bg="light" expand="lg" sticky="top">
+        <Navbar className="p-3 dosar-nav" expand="lg" sticky="top">
             <Navbar.Brand href="/" className="">
-                Ngethrift
-                {/* <img
+                {/* Ngethrift */}
+                <img
                     src={gambar}
-                    width="150"
-                    className="d-inline-block align-top mx-2"
+                    width="110"
+                    className="d-inline-block align-top mx-3"
                     alt="DOSAR"
-                /> */}
+                />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
