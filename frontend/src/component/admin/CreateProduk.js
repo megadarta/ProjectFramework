@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../css/CreateProduk.css';
 import NavbarAdmin from './NavbarAdmin';
 
 function CreateProduk() {
+    const [produk_nama, setNama] = useState();
+    const [kategori, setKategori] = useState();
+    const [harga, setHarga] = useState();
+
+    function submitProduk(e){
+        e.preventDefault();
+        console.log(produk_nama);
+        console.log(kategori);
+        console.log(harga);
+
+        fetch('http://localhost:8000/create-produk', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify({produk_nama, kategori, harga})
+        }).then(res => res.json()).then(data => console.log(data));
+    }
+
     return (
         <div className="d-flex">
             <div>
@@ -54,7 +74,7 @@ function CreateProduk() {
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form onSubmit={submitProduk} method="post">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add Employee</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -62,15 +82,15 @@ function CreateProduk() {
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" required></input>
+                                    <input type="text" class="form-control" required onChange={e => setNama(e.target.value)}></input>
                                 </div>
                                 <div class="form-group">
                                     <label>Kategori</label>
-                                    <input type="email" class="form-control" required></input>
+                                    <input type="text" class="form-control" required onChange={e => setKategori(e.target.value)}></input>
                                 </div>
                                 <div class="form-group">
                                     <label>Harga</label>
-                                    <textarea class="form-control" required></textarea>
+                                    <textarea class="form-control" required onChange={e => setHarga(e.target.value)}></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
