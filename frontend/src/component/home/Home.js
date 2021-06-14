@@ -13,25 +13,12 @@ return (
         
         <NavbarPage />
         <Corousel />
-        <PilihKategori />
+        
         <div className="container">
+        <PilihKategori />
         <div className="list-produk">
             <div className="d-flex justify-content-center judul-produk">PRODUK</div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
-                <div className="col"><CardProduk /></div>
                 <div className="col"><CardProduk /></div>
             </div>
             

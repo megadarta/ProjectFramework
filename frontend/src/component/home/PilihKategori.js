@@ -1,58 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/PilihKategori.css';
 import baju from '../../asset/JAKET1.jpg';
 import { Card } from 'react-bootstrap';
 
 function PilihKategori() {
+
+    const [kategori, getKategori] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/kategori').then(res => res.json()).then(data =>
+            getKategori(data.results)
+        );
+    },[])
+    
     return (
+
         <div className="Container PilihKategori ">
 
             <div className="d-flex justify-content-center judul-produk">KATEGORI</div>
             <div className="  justify-content-center row row-cols-auto">
-                <div class="col col-kategori">
-                    <Card className="kategori">
-                        <a href="">
-                        <div className="d-flex">
-                            <div>
-                                <Card.Img variant="top" src={baju} className="img-kategori" />
-                            </div>
-                            <div className="text-kategori align-self-center">
-                            <Card.Text>
-                                <b>DEWASA</b>
-                            </Card.Text>
-                            </div>
+                {
+                    kategori.map((y) =>
+                        <div class="col col-kategori align-self-center">
+                            <Card className="kategori align-center">
+                                <a href="">
+                                    <div className="d-flex">
+                                        <div className="text-kategori align-self-center">
+                                            {/* <Card.Text> */}
+                                                <b>{y.nama_kategori}</b>
+                                            {/* </Card.Text> */}
+                                        </div>
+                                    </div>
+                                </a>
+                            </Card>
                         </div>
-                        </a>
-                    </Card>
-                </div>
-                <div class="col col-kategori"><Card className="kategori">
-                    <a href="">
-                    <div className="d-flex">
-                            <div>
-                                <Card.Img variant="top" src={baju} className="img-kategori" />
-                            </div>
-                            <div className="text-kategori align-self-center">
-                            <Card.Text>
-                                <b>DEWASA</b>
-                            </Card.Text>
-                            </div>
-                        </div>
-                    </a>
-                </Card></div>
-                <div class="col col-kategori"><Card className="kategori">
-                    <a href="">
-                    <div className="d-flex">
-                            <div>
-                                <Card.Img variant="top" src={baju} className="img-kategori" />
-                            </div>
-                            <div className="text-kategori align-self-center">
-                            <Card.Text>
-                                <b>DEWASA</b>
-                            </Card.Text>
-                            </div>
-                        </div>
-                    </a>
-                </Card></div>
+
+
+
+                    )
+                }
+
 
             </div>
         </div>

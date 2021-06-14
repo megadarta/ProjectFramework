@@ -1,27 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/CreateProduk.css';
 import NavbarAdmin from './NavbarAdmin';
+// import cors from 'cors';
 
 function CreateProduk() {
     const [produk_nama, setNama] = useState();
     const [kategori, setKategori] = useState();
     const [harga, setHarga] = useState();
+    const [produk, setProduk] = useState([]);
+    const [pilkategori, getKategori] = useState([]);
+    const [gambar, setGambar] = useState();
 
-    function submitProduk(e){
+    function submitProduk(e) {
         e.preventDefault();
         console.log(produk_nama);
         console.log(kategori);
         console.log(harga);
 
-        fetch('http://localhost:8000/create-produk', {
+        fetch('http://localhost:3001/create-produk', {
             method: 'POST',
-            credentials: 'include',
             headers: {
-                'Content-Type' : 'application/json',
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({produk_nama, kategori, harga})
+            body: JSON.stringify({ nama_produk: produk_nama, kategori, harga, gambar })
         }).then(res => res.json()).then(data => console.log(data));
     }
+
+    useEffect(() => {
+        fetch('http://localhost:3001/produk').then(res => res.json()).then(data =>
+            setProduk(data.results)
+        );
+    })
+    useEffect(() => {
+        fetch('http://localhost:3001/kategori').then(res => res.json()).then(data =>
+            getKategori(data.results)
+        );
+    })
 
     return (
         <div className="d-flex">
@@ -38,7 +52,7 @@ function CreateProduk() {
                             </div>
                             <div class="d-flex icon-atas-produk justify-content-end">
                                 <div><a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons ">&#xE147;</i> <span>Add</span></a>
-                                {/* </div><div><a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a> */}
+                                    {/* </div><div><a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a> */}
                                 </div>
                             </div>
                         </div>
@@ -53,17 +67,21 @@ function CreateProduk() {
                             </tr>
                         </thead>
                         <tbody className="tbody-pesanan">
-                            <tr>
-                                <td>Baju</td>
-                                <td>Atasan</td>
-                                <td>20.000</td>
-                                <td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </td>
-                            </tr>
+                            {
+                                produk.map((x) =>
+                                    <tr>
+                                        <td>{x.nama_produk}</td>
+                                        <td>{x.nama_kategori}</td>
+                                        <td>{x.harga}</td>
+                                        <td>
+                                            <td>
+                                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                            </td>
+                                        </td>
+                                    </tr>
+                            )}
+
                         </tbody>
                     </table>
 
@@ -86,11 +104,24 @@ function CreateProduk() {
                                 </div>
                                 <div class="form-group">
                                     <label>Kategori</label>
-                                    <input type="text" class="form-control" required onChange={e => setKategori(e.target.value)}></input>
+                                    <select onChange={e => setKategori(e.target.value)}>
+                                        <option >Pilih kategori</option>
+                                    {
+                                        
+                                        pilkategori.map((y) =>
+                                        
+                                            <option value={y.id_kategori}>{y.nama_kategori}</option>
+                                        
+                                    )}
+                                    </select>  
                                 </div>
                                 <div class="form-group">
                                     <label>Harga</label>
                                     <textarea class="form-control" required onChange={e => setHarga(e.target.value)}></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gambar</label>
+                                    <input type="text" class="form-control" required onChange={e => setGambar(e.target.value)}></input>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -124,7 +155,7 @@ function CreateProduk() {
                                     <label>Harga</label>
                                     <textarea class="form-control" required></textarea>
                                 </div>
-                                
+
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></input>
