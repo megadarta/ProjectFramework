@@ -1,22 +1,60 @@
-import React from 'react';
-import '../../css/Login.css';
+import React, { useState, useEffect } from 'react';
+// import '../../css/Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram, faFacebook} from '@fortawesome/fontawesome-free-brands';
 import bajuu from '../../asset/bajuu.jpg';
+import { useHistory } from 'react-router';
+
 
 function Login() {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    const history = useHistory();
+
+    function loginUser(e) {
+        e.preventDefault();
+        // console.log(email);
+        // console.log(password);
+        fetch('http://localhost:3001/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password })
+        }).then(res => res.json()).then(data =>{
+            console.log(data)
+            if (data.success==true){
+                sessionStorage.setItem("user", JSON.stringify(data.results[0]))
+                const user = JSON.parse(sessionStorage.getItem("user"));
+                console.log(user);
+                history.push('/home');
+            }
+        } );
+        
+    }
+
+    useEffect(() => {
+        fetch('http://localhost:3001/login').then(res => res.json()).then(data => {
+            console.log(data.results);
+            
+        }
+            //console.log(data.results)
+        );
+    })
+
 return (
     <div className="container" id="container">
 		<div className="form-container login log-in-container">
-			<form action="#">
+			<form method="post" onSubmit={loginUser}>
 				<h1>Login</h1>
 				<div className="social-container">
 					<a href="#" className="social"><FontAwesomeIcon className ='font-awesome' icon={faFacebook} /></a>
 					<a href="#" className="social"><FontAwesomeIcon className ='font-awesome' icon={faInstagram} /></a>
 				</div>
 				<span>or use your account</span>
-				<input type="username" className="form-control" id="username" name="username" placeholder="Username"></input>
-				<input type="password"  className="form-control" id="password" name="password" placeholder="Password"></input>
+				<input onChange={e => setEmail(e.target.value)} type="email" className="form-control" id="email" name="email" placeholder="Email"></input>
+				<input onChange={e => setPassword(e.target.value)} type="password"  className="form-control" id="password" name="password" placeholder="Password"></input>
                 <div className="remember">
 					<input type="checkbox" value="remember-me" name="remember"></input><label>Remember Me</label>
                 </div>

@@ -58,7 +58,7 @@ app.get('/kategori',(req,res) => {
 })
 
 app.post('/regis',(req,res) => {
-    let data = { email: req.body.email,  role: req.body.role, nama_user: req.body.nama_user, alamat: req.body.alamat, no_telepon:req.body.no_telepon };
+    let data = { email: req.body.email,  role: '2', nama_user: req.body.nama, password: req.body.password, };
     let sql = "INSERT INTO user SET ? ";
     let query = conn.query(sql, data, (err, results) => {
         if(err) throw err;
@@ -68,13 +68,28 @@ app.post('/regis',(req,res) => {
 
 
 app.post('/login',(req,res) => {
-    let data = { email: req.body.email,  role: req.body.role, nama_user: req.body.nama_user, alamat: req.body.alamat, no_telepon:req.body.no_telepon };
-    let sql = "INSERT INTO user SET ? ";
+    let data = { email: req.body.email, password: req.body.password };
+    let sql = "SELECT * FROM user WHERE email = '" + req.body.email + "' AND password = '" + req.body.password + "'";
     let query = conn.query(sql, data, (err, results) => {
-        if(err) throw err;
-        res.json({results:results});
-        });
-})
+        if (results.length > 0) {
+            res.json({success: true, results: results});
+        } else {
+            res.json({results: false});
+        }
+    });
+});
+
+app.post('/cart',(req,res) => {
+    let data = { id_user: req.body.id_user, id_produk: req.body.id_produk, kuantitas_produk: req.body.id_kuantitas_produk };
+    let sql = "INSERT INTO keranjang SET ?" ;
+    let query = conn.query(sql, data, (err, results) => {
+        if (results.length > 0) {
+            res.json({success: true, results: results});
+        } else {
+            res.json({results: false});
+        }
+    });
+});
 
 
 app.listen(3001, () => {
