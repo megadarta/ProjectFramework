@@ -80,14 +80,11 @@ app.post('/login',(req,res) => {
 });
 
 app.post('/cart',(req,res) => {
-    let data = { id_user: req.body.id_user, id_produk: req.body.id_produk, kuantitas_produk: req.body.id_kuantitas_produk };
+    let data = { id_user: req.body.id_user, id_produk: req.body.id_produk, kuantitas_produk: req.body.kuantitas_produk };
     let sql = "INSERT INTO keranjang SET ?" ;
     let query = conn.query(sql, data, (err, results) => {
-        if (results.length > 0) {
-            res.json({success: true, results: results});
-        } else {
-            res.json({results: false});
-        }
+        if (err) throw err; 
+        res.json({results: false});
     });
 });
 

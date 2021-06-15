@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import '../../css/Login.css';
+import '../../css/Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram, faFacebook} from '@fortawesome/fontawesome-free-brands';
 import bajuu from '../../asset/bajuu.jpg';
@@ -44,7 +44,7 @@ function Login() {
     })
 
 return (
-    <div className="container" id="container">
+    <div className="container1" id="container1">
 		<div className="form-container login log-in-container">
 			<form method="post" onSubmit={loginUser}>
 				<h1>Login</h1>
