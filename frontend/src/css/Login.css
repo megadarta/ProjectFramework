@@ -109,12 +109,12 @@ input {
 
 .boxT {
 	padding: 1rem;
-	background-color: #7cc4b4;
+	background-color: #ec7b59f1;
 	border-radius: 0.5rem;
 	opacity: 90%;
 }
 .boxT h1 {
-	color: rgb(23, 69, 138);
+	color: rgb(255, 255, 255);
 	font-size: 3rem;
 }
 

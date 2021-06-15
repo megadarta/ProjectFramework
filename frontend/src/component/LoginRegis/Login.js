@@ -59,16 +59,11 @@ function Login(kirim) {
             <div className="form-container login log-in-container">
                 <form className="form12" method="post" onSubmit={loginUser}>
                     <h1>Login</h1>
-                    <div className="social-container">
-                        <a href="#" className="social"><FontAwesomeIcon className='font-awesome' icon={faFacebook} /></a>
-                        <a href="#" className="social"><FontAwesomeIcon className='font-awesome' icon={faInstagram} /></a>
-                    </div>
-                    <span>or use your account</span>
+
+                    
                     <input onChange={e => setEmail(e.target.value)} type="email" className="form-control" id="email" name="email" placeholder="Email"></input>
                     <input onChange={e => setPassword(e.target.value)} type="password" className="form-control" id="password" name="password" placeholder="Password"></input>
-                    <div className="remember">
-                        <input type="checkbox" value="remember-me" name="remember"></input><label>Remember Me</label>
-                    </div>
+
                     <br></br>
                     <button className="btn btn-lg btn-primary btn-block" type="submit" name="login">Login</button>
                     <a href="/regis" className="btn btn-lg btn-success btn-block">REGISTER</a>

@@ -37,8 +37,7 @@ return (
                 
                 <span>Please Register Your Identity</span>
                 <hr/>
-					<a href="#" class="social"><FontAwesomeIcon className ='font-awesome' icon={faFacebook} /></a>
-					<a href="#" class="social"><FontAwesomeIcon className ='font-awesome' icon={faInstagram} /></a>
+
 				</div>
 
                 
