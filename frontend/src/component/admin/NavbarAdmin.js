@@ -10,6 +10,9 @@ import {
 import { NavLink } from 'react-router-dom';
 
 const NavbarAdmin = () => {
+  function logout(){
+    sessionStorage.removeItem("user");
+}
   return (
     <div
       style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}
@@ -41,8 +44,8 @@ const NavbarAdmin = () => {
             style={{
               padding: '20px 5px',
             }}
-          >
-            Admin Ngethrift
+           onClick={logout}>
+            <a href="/login" >Logout</a>
           </div>
         </CDBSidebarFooter>
       </CDBSidebar>

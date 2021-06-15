@@ -24,13 +24,14 @@ function user(e) {
 
 
 return (
+    <body className="body12">
 	<div class="container" id="container">
 		<div class="form-container regis log-in-container">
 				<h1>Register</h1>
                 <br/>
                 <span>Please Register Your Identity</span>
                 <hr/>
-                <form method="post" onSubmit={user}>
+                <form className="form12" method="post" onSubmit={user}>
 				<div class="social-container">
 				<h1>Register</h1>
                 
@@ -60,6 +61,7 @@ return (
 			</div>
 		</div>
 	</div>
+    </body>
 );
 }
 

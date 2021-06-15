@@ -5,7 +5,10 @@ import gambartas from '../asset/keranjang.png';
 import mega from '../asset/user.svg';
 import '../css/Navbar.css';
 
-function NavbarPage() {
+function NavbarPage(kirim) {
+    function logout(){
+        sessionStorage.removeItem("user");
+    }
     return (
         <Navbar className="p-3 dosar-nav" expand="lg" sticky="top">
             <Navbar.Brand href="/" className="">
@@ -25,7 +28,7 @@ function NavbarPage() {
                 </Form>
                 
                      <Nav className="mx-auto">
-                                    <Nav.Link href="/cart" className="d-flex align-items-center mr-5">
+                                    <Nav.Link href="/chekout" className="d-flex align-items-center mr-5">
                                         <img
                                             src={gambartas}
                                             width="30px"
@@ -48,12 +51,13 @@ function NavbarPage() {
                                             </div> 
                                         </a>
                                     </Nav.Link>
+                                    <p>{kirim.user?.nama_user}</p>
                                     <NavDropdown title=
                                             { <Image width="35" src={mega} roundedCircle /> }
                                             id="basic-nav-dropdown">
                                       
                                         <NavDropdown.Item href="/transactions">Riwayat Transaksi</NavDropdown.Item>
-                                        <NavDropdown.Item href="/login" >Logout</NavDropdown.Item>
+                                        <NavDropdown.Item href="/login" onClick={logout}>Logout</NavDropdown.Item>
                                         {/* <NavDropdown.Divider />
                                         <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item> */}
                                     </NavDropdown>

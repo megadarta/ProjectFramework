@@ -4,44 +4,68 @@ import NavbarPage from '../NavbarPage';
 import Footer from '../Footer';
 import produk1 from "../../asset/JAKET2.jpg"
 import CardProduk from '../home/CardProduk';
-import {Button} from 'react-bootstrap';
-import {useParams} from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
-function DetailProduk() {
+import { useHistory } from 'react-router';
+
+function DetailProduk(kirim) {
     const urlParams = new URLSearchParams(window.location.search);
     const idproduk = urlParams.get('idproduk');
     const [tampil, setTampil] = useState([]);
-
+    const history = useHistory();
     const [jumlahbeli, setJumlahBeli] = useState(1);
     const [hasiltotal, setHasiltotal] = useState();
-    
+
     useEffect(() => {
         fetch(`http://localhost:3001/tampil?idproduk=${idproduk}`).then(res => res.json()).then(data => {
-        setTampil(data.results)
-        setHasiltotal(data.results[0].harga);
-        console.log(data.results)
-    }
-        
-    );
-    },[])
+            setTampil(data.results)
+            setHasiltotal(data.results[0].harga);
+            // console.log(data.results)
+        }
+
+        );
+    }, [])
 
     function tambahjumlah() {
         setJumlahBeli(jumlahbeli + 1);
         setHasiltotal((jumlahbeli+1) * tampil[0]?.harga);
-        console.log(tampil[0]?.harga);
-        console.log(jumlahbeli);
+        // console.log(tampil[0]?.harga);
+        // console.log(jumlahbeli);
     }
-    function kurangjumlah(){
-        if(jumlahbeli > 1 ){
-        setJumlahBeli(jumlahbeli-1);
-        setHasiltotal((jumlahbeli-1) * tampil[0]?.harga);
-        console.log(tampil[0]?.harga);
-        console.log(jumlahbeli);
+    
+    function kurangjumlah() {
+        if (jumlahbeli > 1) {
+            setJumlahBeli(jumlahbeli - 1);
+            setHasiltotal((jumlahbeli-1) * tampil[0]?.harga);
+            // console.log(tampil[0]?.harga);
+            // console.log(jumlahbeli);
+           
         }
+    }
+
+    function masukkankeranjang(e){
+        e.preventDefault();
+        console.log(kirim.user?.id_user);
+        console.log(tampil[0]?.id_produk);
+        console.log(jumlahbeli);
+
+        fetch('http://localhost:3001/inputkeranjang', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id_user: kirim.user.id_user, id_produk: tampil[0].id_produk, kuantitas_produk: jumlahbeli })
+        }).then(res => res.json()).then(data => {
+            console.log(data)
+            // kirim.setUser(kirim.user);
+            history.push(`/chekout?iduser=${kirim.user.id_user}`);
+        });
     }
     return (
         <div>
-            <NavbarPage />
+            
+        <NavbarPage user={kirim.user}/>
             <div className="container">
                 <div className="detail-produk d-flex flex-column flex-lg-row">
                     <div className="img-detail-produk">
@@ -70,7 +94,7 @@ function DetailProduk() {
                             </div>
                         </div>
                         <div className="btn-beli-detail">
-                            <Button className="btn-beli" style={{ width: "100%" }}>Masukkan Keranjang</Button>
+                            <Button className="btn-beli" style={{ width: "100%" }} onClick={masukkankeranjang}>Masukkan Keranjang</Button>
                         </div>
                     </div>
                 </div>
@@ -78,7 +102,7 @@ function DetailProduk() {
                     <div className="d-flex justify-content-center judul-produk">PRODUK LAINNYA</div>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                         <div className="col"><CardProduk /></div>
-                        
+
                     </div>
                 </div>
             </div>

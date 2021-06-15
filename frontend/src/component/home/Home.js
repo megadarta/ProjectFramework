@@ -7,11 +7,11 @@ import Corousel from './Corousel';
 import PilihKategori from './PilihKategori';
 import Footer from '../Footer';
 
-function Home() {
+function Home(kirim) {
 return (
     <div className="home">
         
-        <NavbarPage />
+        <NavbarPage user={kirim.user}/>
         <Corousel />
         
         <div className="container">

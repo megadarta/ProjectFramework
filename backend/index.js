@@ -76,18 +76,32 @@ app.post('/login',(req,res) => {
         } else {
             res.json({results: false});
         }
-    });
+});
 });
 
-app.post('/cart',(req,res) => {
+
+app.post('/inputkeranjang', (req, res) => {
     let data = { id_user: req.body.id_user, id_produk: req.body.id_produk, kuantitas_produk: req.body.kuantitas_produk };
-    let sql = "INSERT INTO keranjang SET ?" ;
+    let sql = "INSERT INTO keranjang SET ?";
     let query = conn.query(sql, data, (err, results) => {
-        if (err) throw err; 
-        res.json({results: false});
+        if (err) throw err;
+        res.json({results:results});
     });
 });
 
+app.get('/tampilkeranjang', (req,res) => {
+    let data = { iduser: req.query.iduser };
+    let sql = "SELECT * FROM keranjang WHERE id_user = " + req.query.iduser;
+    let query = conn.query(sql, (err, results) => {
+        
+    //let sql2 = "SELECT * FROM produk WHERE produk.id_produk = " + results[0].id_produk;
+    
+    //let query2 = conn.query2(sql2, (err, results) => {
+        if (err) throw err;
+        res.json({results:results});
+    //});
+    })
+})
 
 app.listen(3001, () => {
     console.log('Server is running at port 8000');
