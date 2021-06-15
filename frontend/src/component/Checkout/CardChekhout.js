@@ -1,17 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/CardChekhout.css';
 import produk1 from '../../asset/JAKET2.jpg'
 
-function CardChekhout() {
+function CardChekhout(kirim) {
+    cons [tampilkeranjang, setTampilKeranjang] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:3001/tampilkeranjang?iduser=${kirim.user?.id_user}`).then(res => res.json()).then(data => {
+            setTampilKeranjang(data.results);
+           
+        }
+
+        );
+    }, [])
+    // useEffect(() => {
+    // console.log(kirim.user?.id_user);
+    // fetch('http://localhost:3001/tampilkeranjang', {
+    //         method: 'get',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({ id: kirim.user?.id_user})
+    //     }).then(res => res.json()).then(data => {
+    //         console.log(data)
+    //         console.log('mega')
+            
+    // });
+    // }, [])
+
     return (
         <div className="CardChekhout justify-content-center d-flex flex-lg-row flex-column">
+            {
+                tampilkeranjang.map((x) => 
+            <div>
             <div className="img-produk-beli d-flex justify-content-center">
-                <div><img src={produk1} style={{width: 100}}></img></div>
+                <div><img src={x.gambar} style={{width: 100}}></img></div>
             </div>
-
             <div className="keterangan-produk-beli mb-2 mt-2 ml-4 d-flex flex-column justify-content-center align-items-start">
                 <div className="nama-produk-dibeli">
-                    <p>JAKET KECE</p>
+                    <p>jaket</p>
                 </div>
                 <div className="harga-dibeli">
                     <p>RP. 30.000</p>
@@ -33,6 +59,8 @@ function CardChekhout() {
             <div className="mb-3 status-pembelian d-flex justify-content-center">
                 <div>Belum dibayar</div>
             </div>
+            </div>
+                )}
         </div>
     );
 }

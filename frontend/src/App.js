@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import DetailProduk from './component/DetailProduk/DetailProduk';
 import Home from './component/home/Home';
@@ -16,41 +17,48 @@ import Login from './component/LoginRegis/Login';
 import Regis from './component/LoginRegis/Regis';
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/home">
-              <Home />
-          </Route>
-          <Route path="/detail-produk">
-              <DetailProduk />
-          </Route>
-          <Route path="/chekout">
-              <Chekhout />
-          </Route>
-          <Route path="/konfirmasi">
-              <Konfirmasi />
-          </Route>
-          <Route path="/pembayaran">
-              <Pembayaran />
-          </Route>
-          <Route path="/admin">
-              <Admin />
-          </Route>
-          <Route path="/create-produk">
-              <CreateProduk />
-          </Route>
-          <Route path="/login">
-              <Login />
-          </Route>
-          <Route path="/regis">
-              <Regis />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
-  );
+  // const [auth, setAuth] = useState(false);
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    setUser(JSON.parse(sessionStorage.getItem("user")))
+  }, []); 
+
+return (
+  <div className="App">
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home setUser={setUser} user={user} />
+        </Route>
+        <Route path="/detail-produk">
+          <DetailProduk setUser={setUser} user={user} />
+        </Route>
+        <Route path="/chekout">
+          <Chekhout setUser={setUser} user={user} />
+        </Route>
+        <Route path="/konfirmasi">
+          <Konfirmasi />
+        </Route>
+        <Route path="/pembayaran">
+          <Pembayaran />
+        </Route>
+        <Route path="/admin">
+          <Admin />
+        </Route>
+        <Route path="/create-produk">
+          <CreateProduk />
+        </Route>
+        <Route path="/login">
+          <Login setUser={setUser} />
+        </Route>
+        <Route path="/regis">
+          <Regis />
+        </Route>
+      </Switch>
+    </Router>
+  </div>
+);
 }
 
 export default App;

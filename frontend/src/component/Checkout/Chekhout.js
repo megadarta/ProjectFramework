@@ -5,10 +5,11 @@ import { Button } from 'react-bootstrap';
 import Footer from '../Footer';
 import CardChekhout from './CardChekhout';
 
-function Chekhout() {
+function Chekhout(kirim) {
 return (
     <div>
-    <NavbarPage />
+    
+    <NavbarPage user={kirim.user}/>
     <div className="container chekout">
         <div ><a href="/home" className="back-co">Kembali</a></div>
         <div className="d-flex flex-column justify-content-center ">
@@ -17,13 +18,7 @@ return (
             </div>
             <div className="list-dibeli">
                 <div className="produk-dibeli d-flex justify-content-center">
-                    <CardChekhout />
-                </div>
-                <div className="produk-dibeli d-flex justify-content-center">
-                    <CardChekhout />
-                </div>
-                <div className="produk-dibeli d-flex justify-content-center">
-                    <CardChekhout />
+                    <CardChekhout user={kirim.user}/>
                 </div>
             </div>
         </div>

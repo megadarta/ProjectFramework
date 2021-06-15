@@ -57,6 +57,51 @@ app.get('/kategori',(req,res) => {
         });
 })
 
+app.post('/regis',(req,res) => {
+    let data = { email: req.body.email,  role: '2', nama_user: req.body.nama, password: req.body.password, };
+    let sql = "INSERT INTO user SET ? ";
+    let query = conn.query(sql, data, (err, results) => {
+        if(err) throw err;
+        res.json({results:results});
+        });
+})
+
+
+app.post('/login',(req,res) => {
+    let data = { email: req.body.email, password: req.body.password };
+    let sql = "SELECT * FROM user WHERE email = '" + req.body.email + "' AND password = '" + req.body.password + "'";
+    let query = conn.query(sql, data, (err, results) => {
+        if (results.length > 0) {
+            res.json({success: true, results: results});
+        } else {
+            res.json({results: false});
+        }
+});
+});
+
+app.post('/inputkeranjang', (req, res) => {
+    let data = { id_user: req.body.id_user, id_produk: req.body.id_produk, kuantitas_produk: req.body.kuantitas_produk };
+    let sql = "INSERT INTO keranjang SET ?";
+    let query = conn.query(sql, data, (err, results) => {
+        if (err) throw err;
+        res.json({results:results});
+    });
+});
+
+app.get('/tampilkeranjang', (req,res) => {
+    let data = { iduser: req.query.iduser };
+    let sql = "SELECT * FROM keranjang WHERE id_user = " + req.query.iduser;
+    let query = conn.query(sql, (err, results) => {
+        
+    let sql2 = "SELECT * FROM produk WHERE produk.id_produk = " + results[0].id_produk;
+    
+    let query2 = conn.query2(sql2, (err, results) => {
+        if (err) throw err;
+        res.json({results:results});
+    });
+})
+
+
 app.listen(3001, () => {
     console.log('Server is running at port 8000');
   });
