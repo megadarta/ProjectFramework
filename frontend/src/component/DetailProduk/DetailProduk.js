@@ -25,12 +25,18 @@ function DetailProduk() {
     );
     },[])
 
-    function tambahjumlah(){
-        setJumlahBeli(jumlahbeli+1);
+    function tambahjumlah() {
+        setJumlahBeli(jumlahbeli + 1);
+        setHasiltotal((jumlahbeli+1) * tampil[0]?.harga);
+        console.log(tampil[0]?.harga);
+        console.log(jumlahbeli);
     }
     function kurangjumlah(){
         if(jumlahbeli > 1 ){
         setJumlahBeli(jumlahbeli-1);
+        setHasiltotal((jumlahbeli-1) * tampil[0]?.harga);
+        console.log(tampil[0]?.harga);
+        console.log(jumlahbeli);
         }
     }
     return (
