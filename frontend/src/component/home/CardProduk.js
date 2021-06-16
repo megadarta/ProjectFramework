@@ -25,12 +25,12 @@ function CardProduk() {
                 </a>
                 <Card.Body>
                     <Card.Title className="text-truncate m-0">
-                        <a href="" style={{ fontWeight: "600", fontSize: "12px", color: 'black'}}>{x.nama_produk}</a>
+                        <a href={`/detail-produk?idproduk=${x.id_produk}`} style={{ fontWeight: "600", fontSize: "12px", color: 'black'}}>{x.nama_produk}</a>
                     </Card.Title>
                     <Card.Text className="mt-3">
                         <b style={{ fontWeight: "600", fontSize: "14px", color: 'black'}}>{x.harga}</b>
             </Card.Text>
-                    <Button className="btn-beli" style={{ width: "100%" }}>BELI</Button>
+                    <Button className="btn-beli" style={{ width: "100%" }}>Masukkan Keranjang</Button>
 
                     {/* <Button variant="ijo" className="btn-kantong" style={{ width: "100%" }} >+ Kantong</Button> */}
                     

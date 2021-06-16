@@ -41,7 +41,7 @@ return (
           <Konfirmasi />
         </Route>
         <Route path="/pembayaran">
-          <Pembayaran />
+          <Pembayaran setUser={setUser} user={user}/>
         </Route>
         <Route path="/admin">
           <Admin />

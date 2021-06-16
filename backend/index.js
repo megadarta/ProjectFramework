@@ -90,17 +90,21 @@ app.post('/inputkeranjang', (req, res) => {
 
 app.get('/tampilkeranjang', (req,res) => {
     let data = { iduser: req.query.iduser };
-    let sql = "SELECT * FROM keranjang WHERE id_user = " + req.query.iduser;
+    let sql = "select * from keranjang join produk on keranjang.id_produk = produk.id_produk where keranjang.id_user = " + req.query.iduser;
     let query = conn.query(sql, (err, results) => {
-        
-    let sql2 = "SELECT * FROM produk WHERE produk.id_produk = " + results[0].id_produk;
-    
-    let query2 = conn.query2(sql2, (err, results) => {
         if (err) throw err;
         res.json({results:results});
     });
 })
 
+app.get('/tampilco', (req,res) => {
+    let data = { iduser: req.query.iduser };
+    let sql = "select * from keranjang join produk on keranjang.id_produk = produk.id_produk where keranjang.id_user = " + req.query.iduser;
+    let query = conn.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json({results:results});
+    });
+})
 
 app.listen(3001, () => {
     console.log('Server is running at port 8000');

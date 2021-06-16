@@ -5,9 +5,17 @@ import gambartas from '../asset/keranjang.png';
 import mega from '../asset/user.svg';
 import '../css/Navbar.css';
 
+import { useHistory } from 'react-router';
+
 function NavbarPage(kirim) {
+    
+    const history = useHistory();
+
     function logout(){
         sessionStorage.removeItem("user");
+    }
+    function klikkeranjang(){
+        history.push(`/chekout?iduser=${kirim.user.id_user}`);
     }
     return (
         <Navbar className="p-3 dosar-nav" expand="lg" sticky="top">
@@ -28,7 +36,7 @@ function NavbarPage(kirim) {
                 </Form>
                 
                      <Nav className="mx-auto">
-                                    <Nav.Link href="/chekout" className="d-flex align-items-center mr-5">
+                                    <Nav.Link onClick={klikkeranjang} className="d-flex align-items-center mr-5">
                                         <img
                                             src={gambartas}
                                             width="30px"
@@ -51,7 +59,7 @@ function NavbarPage(kirim) {
                                             </div> 
                                         </a>
                                     </Nav.Link>
-                                    <p>{kirim.user?.nama_user}</p>
+                                    <div className="p-3">{kirim.user?.nama_user}</div>
                                     <NavDropdown title=
                                             { <Image width="35" src={mega} roundedCircle /> }
                                             id="basic-nav-dropdown">
