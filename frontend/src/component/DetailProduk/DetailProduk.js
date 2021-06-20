@@ -16,31 +16,33 @@ function DetailProduk(kirim) {
     const history = useHistory();
     const [jumlahbeli, setJumlahBeli] = useState(1);
     const [hasiltotal, setHasiltotal] = useState();
+    
+    const [produk, getProduk] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:3001/tampil?idproduk=${idproduk}`).then(res => res.json()).then(data => {
             setTampil(data.results)
             setHasiltotal(data.results[0].harga);
-            // console.log(data.results)
         }
 
         );
     }, [])
 
+    useEffect(() => {
+        fetch('http://localhost:3001/produk').then(res => res.json()).then(data =>
+        getProduk(data.results));
+        }
+    , [])
+
     function tambahjumlah() {
         setJumlahBeli(jumlahbeli + 1);
         setHasiltotal((jumlahbeli+1) * tampil[0]?.harga);
-        // console.log(tampil[0]?.harga);
-        // console.log(jumlahbeli);
     }
     
     function kurangjumlah() {
         if (jumlahbeli > 1) {
             setJumlahBeli(jumlahbeli - 1);
             setHasiltotal((jumlahbeli-1) * tampil[0]?.harga);
-            // console.log(tampil[0]?.harga);
-            // console.log(jumlahbeli);
-           
         }
     }
 
@@ -101,8 +103,11 @@ function DetailProduk(kirim) {
                 <div className="list-produk">
                     <div className="d-flex justify-content-center judul-produk">PRODUK LAINNYA</div>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                        <div className="col"><CardProduk /></div>
-
+                    {
+                    
+                    produk.map((x) =>
+                        <div className="col"><CardProduk user={kirim.user} x={x}/></div>
+                    )}
                     </div>
                 </div>
             </div>
