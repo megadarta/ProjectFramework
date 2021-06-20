@@ -1,10 +1,11 @@
 .searchtxt {
-    width: 53vw!important;
-    border-radius: 0!important;
+    width: 40vw!important;
+    border-radius: 5!important;
 }
 
 .searchbar, .searchbar:hover {
-    outline: 3px solid #B66043;
+    /* outline: 1.5px solid #B66043; */
+    border-radius: 5!important;
 }
 
 .searchbtn:hover {
@@ -20,11 +21,18 @@
 .searchbtn {
     border-color: #B36A40;
     background-color: #B36A40!important;
-    border-radius: 0!important;
+    border-radius: 5!important;
+    width: 5vw!important;
+    margin-left: 0.5em;
 }
 
 .dropdown-menu {
     left: -100px!important;
+}
+
+.username {
+    color: #B36A40;
+    font-weight: 550;
 }
 
 .cart {
