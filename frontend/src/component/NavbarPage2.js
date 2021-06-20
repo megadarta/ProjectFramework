@@ -7,7 +7,7 @@ import '../css/Navbar.css';
 import swal from 'sweetalert';
 import { useHistory } from 'react-router';
 
-function NavbarPage(kirim) {
+function NavbarPage2(kirim) {
     
     const history = useHistory();
 
@@ -16,9 +16,8 @@ function NavbarPage(kirim) {
     }
     function klikkeranjang(){
         if(sessionStorage.length!=0){        
-            console.log(sessionStorage.length);
-            // swal("susses!", "Anda harus login terlebih dahulu", "error");
-            history.push(`/chekout?iduser=${kirim.user.id_user}`);
+            swal("susses!", "Anda harus login terlebih dahulu", "error");
+            // history.push(`/chekout?iduser=${kirim.user.id_user}`);
         }
         else{
             console.log(sessionStorage);
@@ -67,28 +66,19 @@ function NavbarPage(kirim) {
                                             </div> 
                                         </a>
                                     </Nav.Link>
-                                    <div className="p-3">{kirim.user?.nama_user}</div>
-                                    <NavDropdown title=
-                                            { <Image width="35" src={mega} roundedCircle /> }
-                                            id="basic-nav-dropdown">
-                                      
-                                        <NavDropdown.Item href="/transactions">Riwayat Transaksi</NavDropdown.Item>
-                                        <NavDropdown.Item href="/login" onClick={logout}>Logout</NavDropdown.Item>
-                                        {/* <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item> */}
-                                    </NavDropdown>
+                                    {/* <div className="p-3">{kirim.user?.nama_user}</div> */}
+                                    <div className="d-flex">
+                                        <div>
+                                            <Button href="/login">Login</Button>
+                                        </div>
+                                        <div>
+                                            <Button href="/regis">Register</Button>
+                                        </div>
+                                    </div>
                                 </Nav>
-                            {/* :   <Nav className="mx-auto">
-                                    <Nav.Link href="/login" className="mr-4">
-                                        <Button variant="ijo-outline" style={{width: "90px"}}>Login</Button>
-                                    </Nav.Link>
-                                    <Nav.Link href="/register"><Button variant="ijo">Register</Button></Nav.Link>
-                                </Nav>
-                        : <div style={{width: "269.33px"}} className="mx-auto"></div> */}
-                    {/* } */}
             </Navbar.Collapse>
         </Navbar>
     );
 };
 
-export default NavbarPage;
+export default NavbarPage2;

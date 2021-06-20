@@ -13,6 +13,9 @@ function Pembayaran(kirim) {
     const [tampilco, setTampilCO] = useState([]);
     const urlParams = new URLSearchParams(window.location.search);
     const iduser = urlParams.get('iduser');
+    var bayar = 0;
+    var ongkir = 10000;
+    const image = React.createRef();
 
     useEffect(() => {
         fetch(`http://localhost:3001/tampilco?iduser=${iduser}`).then(res => res.json()).then(data => {
@@ -24,10 +27,24 @@ function Pembayaran(kirim) {
         );
     }, [])
 
+    function imageHandler() {
+        const imageInput = image.current.files[0];
+        console.log(imageInput);
+        fetch(`http://localhost:3001/api/image`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'multipart/form-data',
+            },
+            body: JSON.stringify({ id_user: kirim.user.id_user, image: imageInput })
+        }).then(res => res.json()).then(data => {
+            console.log(data)
+        });
+    }
     return (
         <div className="full">
             <NavbarPage user={kirim.user} />
             <div className="container d-flex flex-lg-row flex-column">
+
                 {/* kiri  */}
                 <div className="kiri-upload">
                     {/* satu */}
@@ -56,14 +73,16 @@ function Pembayaran(kirim) {
                     </div>
                     {/* keterangan1 */}
                     <div className="isian-pesanan">
-                    {
-                                    tampilco.map((x) =>
+                        {
+                            tampilco.map((x) =>
                                 <div className="d-flex card-list">
                                     <img src={'http://localhost:3001/' + x.gambar} className="produk-bayar"></img>
                                     <div className="ml-4">
                                         <div className="nama-produk-beli">{x.nama_produk}</div>
-                                        <div className="jumlah-produk-beli">Jumlah : {x.kuantitas_produk }</div>
+                                        <div className="jumlah-produk-beli">Jumlah : {x.kuantitas_produk}</div>
                                         <div className="total-produk-beli">Total : {x.harga}</div>
+
+                                        <div display="none">{bayar = bayar + (x.kuantitas_produk * x.harga)}</div>
                                     </div>
                                 </div>
                             )}
@@ -80,39 +99,43 @@ function Pembayaran(kirim) {
                     </div>
                     {/* keterangan3 */}
 
-                    <div className="upload-bayar">
-                        <input type="file" className="file-up"></input>
-                    </div>
+
                 </div>
 
                 {/* kanan */}
-                <div className="kanan-bayar">
-                    <div>
-                        <div className="kanan-atas"></div>
-                        <div className="card-info">
-                            <div className="detail-pembayaran">Detail Pembayaran</div>
-                            <hr></hr>
-                            <div className="total-belanja">Total Belanja : Rp. 270.000</div>
-                            <div className="ongkos-kirim">Ongkos Kirim : Rp. 10.000</div>
-                            <hr></hr>
-                            <div className="total-seluruh">Total Keseluruhan : Rp. 280.000</div>
-                            <Button className="btn-beli mt-3 align-center" style={{ width: "50%" }}>BAYAR</Button>
-                        </div>
-                    </div>
-
-                    <div className="bawah-kanan">
-                        <div className="info-bank-atas"></div>
-                        <div className="info-bank-bawah">
-                            <span>Pembayaraan dapat dilakukan di :</span>
-                            <ul>
-                                <li>BRI : 192-909-000-999 ( a.n NgethriftYuk )</li>
-                                <li>Mandiri : 9898-76879-899 (a.n NgethriftYuk )</li>
-                                <li>BCA : 1298-989-999-888 ( a.n NgethriftYuk )</li>
-                            </ul>
+                <form encType="multipart/form-data" method="post" action={imageHandler}>
+                    <div className="kanan-bayar">
+                        <div>
+                            <div className="kanan-atas"></div>
+                            <div className="card-info">
+                                <div className="detail-pembayaran">Detail Pembayaran</div>
+                                <hr></hr>
+                                <div className="total-belanja">Total Belanja : Rp. {bayar}</div>
+                                <div className="ongkos-kirim">Ongkos Kirim : Rp. {ongkir}</div>
+                                <hr></hr>
+                                <div className="total-seluruh">Total Keseluruhan : Rp. {bayar + ongkir}</div>
+                                <div className="upload-bayar">
+                                    <input type="file" name="image" ref={image} />
+                                </div>
+                                <Button className="btn-beli mt-3 align-center" style={{ width: "50%" }} type="submit">BAYAR</Button>
+                            </div>
                         </div>
 
+                        <div className="bawah-kanan">
+                            <div className="info-bank-atas"></div>
+                            <div className="info-bank-bawah">
+                                <span>Pembayaraan dapat dilakukan di :</span>
+                                <ul>
+                                    <li>BRI : 192-909-000-999 ( a.n NgethriftYuk )</li>
+                                    <li>Mandiri : 9898-76879-899 (a.n NgethriftYuk )</li>
+                                    <li>BCA : 1298-989-999-888 ( a.n NgethriftYuk )</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
                     </div>
-                </div>
+                </form>
             </div>
             <Footer />
         </div>
