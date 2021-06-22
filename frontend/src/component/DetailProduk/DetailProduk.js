@@ -79,7 +79,7 @@ function DetailProduk(kirim) {
                             <p>{tampil[0]?.nama_produk}</p>
                         </div>
                         <div className="harga-detail">
-                            <p>{tampil[0]?.harga}</p>
+                            <p>Rp {tampil[0]?.harga}</p>
                         </div>
                         <div className="beli-detail">
                             <div className="text-kuantitas">Kuantitas</div>
@@ -91,7 +91,7 @@ function DetailProduk(kirim) {
                                 </div>
                                 <div className="ml-3 text-kuantitas">
                                     <div>Sub Total</div>
-                                    <div>{hasiltotal}</div>
+                                    <div>Rp {hasiltotal}</div>
                                 </div>
                             </div>
                         </div>

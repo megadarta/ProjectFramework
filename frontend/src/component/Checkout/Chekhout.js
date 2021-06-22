@@ -40,8 +40,6 @@ function Chekhout(kirim) {
                                 {
                                     tampilkeranjang.map((x) =>
                                         <div className="CardChekhout justify-content-center d-flex flex-lg-row flex-column">
-
-
                                             <div className="img-produk-beli d-flex justify-content-center">
                                                 <div><img src={'http://localhost:3001/' + x.gambar} style={{ width: 100 }}></img></div>
                                             </div>
@@ -84,7 +82,7 @@ function Chekhout(kirim) {
                         <div>{bayar}</div>
                     </div>
                     <div className="ml-3 mt-4 mb-3 mr-4">
-                        <Button href={`/pembayaran?iduser=${kirim.user.id_user}`} className="btn-co" style={{ width: "100%" }}>CHEKHOUT</Button>
+                        <Button href={`/pembayaran?iduser=${kirim.user?.id_user}`} className="btn-co" style={{ width: "100%", backgroundColor: "#B36A40" }}>CHECKOUT</Button>
                     </div>
                 </div>
 

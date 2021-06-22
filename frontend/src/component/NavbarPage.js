@@ -40,10 +40,10 @@ function NavbarPage(kirim) {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Form inline className=" mx-auto">
                     <FormControl type="text" placeholder="Search" className="searchtxt searchbar"/>
-                    <a href="/"><Button className="searchbtn searchbar">Go</Button></a>
+                    <a href="/"><Button className="searchbtn searchbar" style={{border: "#B36A40"}}>Go</Button></a>
                 </Form>
                      <Nav className="mx-auto">
-                                    <Nav.Link href="/cart" className="d-flex align-items-center mr-5">
+                     <Nav.Link href="/chekout" className="d-flex align-items-center mr-5">
                                         <img
                                             src={gambartas}
                                             width="35px"
@@ -51,7 +51,7 @@ function NavbarPage(kirim) {
                                             className="d-inline-block align-top"
                                             alt="DOSAR"
                                         />
-                                        <a className="ml-2" style={{ position: "relative" }}>
+                                        <a className="ml-2" style={{ position: "relative" }} href="/chekout">
                                             {/* <p className="m-0"><b>Kantong Belanja</b></p> */}
                                             <div className="d-flex justify-content-center align-items-center" style={{ 
                                                 position: "absolute", 

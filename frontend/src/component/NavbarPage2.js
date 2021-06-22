@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Navbar, Nav, FormControl, NavDropdown, InputGroup, Button, Image } from 'react-bootstrap';
-import gambar from '../asset/logo.png';
+import gambar from '../asset/logo2.png';
 import gambartas from '../asset/keranjang.png';
 import mega from '../asset/user.svg';
 import '../css/Navbar.css';
@@ -24,13 +24,14 @@ function NavbarPage2(kirim) {
             swal("Error!", "Anda harus login terlebih dahulu", "error");
         }
     }
+
     return (
         <Navbar className="p-3 dosar-nav" expand="lg" sticky="top">
-            <Navbar.Brand href="/" className="">
+            <Navbar.Brand href="/home2" className="">
                 {/* Ngethrift */}
                 <img
                     src={gambar}
-                    width="110"
+                    width="200"
                     className="d-inline-block align-top mx-3"
                     alt="DOSAR"
                 />
@@ -39,20 +40,20 @@ function NavbarPage2(kirim) {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Form inline className=" mx-auto">
                     <FormControl type="text" placeholder="Search" className="searchtxt searchbar"/>
-                    <a href="/"><Button className="searchbtn searchbar">Search</Button></a>
+                    <a href="/"><Button className="searchbtn searchbar" style={{border: "#B36A40"}}>Go</Button></a>
                 </Form>
                 
                      <Nav className="mx-auto">
-                                    <Nav.Link onClick={klikkeranjang} className="d-flex align-items-center mr-5">
+                     <Nav.Link  className="d-flex align-items-center mr-5" onClick={klikkeranjang}>
                                         <img
                                             src={gambartas}
-                                            width="30px"
-                                            height="35px"
+                                            width="35px"
+                                            height="30px"
                                             className="d-inline-block align-top"
                                             alt="DOSAR"
                                         />
                                         <a className="ml-2" style={{ position: "relative" }}>
-                                            <p className="m-0"><b>Kantong Belanja</b></p>
+                                            {/* <p className="m-0"><b>Kantong Belanja</b></p> */}
                                             <div className="d-flex justify-content-center align-items-center" style={{ 
                                                 position: "absolute", 
                                                 left: "-20px",
@@ -64,15 +65,15 @@ function NavbarPage2(kirim) {
                                             }}>
                                                 
                                             </div> 
-                                        </a>
+                                        </a>    
                                     </Nav.Link>
                                     {/* <div className="p-3">{kirim.user?.nama_user}</div> */}
                                     <div className="d-flex">
-                                        <div>
-                                            <Button href="/login">Login</Button>
+                                        <div className="d-flex justify-content-center align-items-center mr-2">
+                                            <Button href="/login" style={{backgroundColor:"#B66043", borderColor:"#B66043"}}>Login</Button>
                                         </div>
-                                        <div>
-                                            <Button href="/regis">Register</Button>
+                                        <div className="d-flex justify-content-center align-items-center">
+                                            <Button href="/regis" style={{backgroundColor:"#B66043", borderColor:"#B66043"}}>Register</Button>
                                         </div>
                                     </div>
                                 </Nav>

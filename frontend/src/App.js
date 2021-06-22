@@ -15,9 +15,7 @@ import Admin from './component/admin/Admin';
 import CreateProduk from './component/admin/CreateProduk';
 import Login from './component/LoginRegis/Login';
 import Regis from './component/LoginRegis/Regis';
-
 import Home2 from './component/home/Home2';
-
 import NavbarPage2 from './component/NavbarPage2';
 
 function App() {
@@ -36,6 +34,9 @@ function App() {
               <Home setUser={setUser} user={user} />            
           </Route>
           <Route path="/home">
+              <Home2 />
+          </Route>
+          <Route path="/home2">
               <Home2 />
           </Route>
           <Route path="/detail-produk">

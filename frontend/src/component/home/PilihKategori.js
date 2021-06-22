@@ -18,16 +18,16 @@ function PilihKategori() {
         <div className="Container PilihKategori ">
 
             <div className="d-flex justify-content-center judul-produk">KATEGORI</div>
-            <div className="  justify-content-center row row-cols-auto">
+            <div className="justify-content-center row row-cols-auto">
                 {
                     kategori.map((y) =>
-                        <div class="col col-kategori align-self-center">
+                        <div class="col col-kategori align-self-center d-flex justify-content-center">
                             <Card className="kategori align-center">
                                 <a href="">
                                     <div className="d-flex">
-                                        <div className="text-kategori align-self-center">
+                                        <div className="text-kategori text-center">
                                             {/* <Card.Text> */}
-                                                <b>{y.nama_kategori}</b>
+                                                <b className="text-center" style={{textDecoration:"none"}}>{y.nama_kategori}</b>
                                             {/* </Card.Text> */}
                                         </div>
                                     </div>

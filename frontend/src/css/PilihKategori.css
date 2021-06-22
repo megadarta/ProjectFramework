@@ -13,14 +13,14 @@
 
 }
 .text-kategori{
-    margin-left: 20px;
     width: 100%;
     color: #EAD9C3;
     font-size: 30px;
 }
 a, a:hover{
-    text-decoration: none;
+    text-decoration: none; 
 }
+
 .row{
     --bs-gutter-x: 0px!important;
 }

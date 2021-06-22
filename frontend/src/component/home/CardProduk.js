@@ -51,29 +51,27 @@ function CardProduk(kirim) {
         }
     }
 
-
-
     return (
         <div className="d-flex">
 
             <div className="d-flex card-kirim">
-                        <Card className="product col">
+                        <Card className="product" style={{width:"250px"}}>
                             <a href={`/detail-produk?idproduk=${kirim.x.id_produk}`}>
-                                <Card.Img variant="top" src={'http://localhost:3001/' + kirim.x.gambar} className="gambar-kirim" />
+                                <Card.Img variant="top" src={'http://localhost:3001/' + kirim.x.gambar} className="gambar-kirim" style={{height: "200px", objectFit: "cover"}} />
                             </a>
                             <Card.Body>
                                 <Card.Title className="text-truncate m-0">
                                     <a href={`/detail-produk?idproduk=${kirim.x.id_produk}`} style={{ fontWeight: "600", fontSize: "12px", color: 'black' }}>{kirim.nama_produk}</a>
                                 </Card.Title>
-                                <Card.Text className="mt-3">
+                                <Card.Text className="mt-4">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-kuantitas btn-minus" onClick={kurangjumlah}>-</button>
                                         <input type="text" class="value-kuantitas" Value={jumlahbeli}></input>
                                         <button type="button" class="btn btn-kuantitas btn-plus" onClick={tambahjumlah}>+</button>
                                     </div>
-                                    <b style={{ fontWeight: "600", fontSize: "14px", color: 'black' }}>{kirim.x.harga}</b>
+                                    <b style={{ fontWeight: "600", fontSize: "14px", color: 'black' }}>Rp {kirim.x.harga}</b>
                                 </Card.Text>
-                                <Button className="btn-beli" style={{ width: "100%" }} onClick={cekbeli}>Beli</Button>
+                                <Button className="btn-beli" style={{ width: "100%", backgroundColor: "#B36A40", border: "#B36A40"}} onClick={cekbeli}>Beli</Button>
                             </Card.Body>
                         </Card>
                  

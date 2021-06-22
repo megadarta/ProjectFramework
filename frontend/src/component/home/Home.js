@@ -42,11 +42,9 @@ return (
         <PilihKategori />
         <div className="list-produk">
             <div className="d-flex justify-content-center judul-produk">PRODUK</div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" >
             {
-                    
                     produk.map((x) =>
-
                 <div className="col"><CardProduk user={kirim.user} x={x} /></div>
             
             )}
