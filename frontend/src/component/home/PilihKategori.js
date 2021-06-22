@@ -21,13 +21,17 @@ function PilihKategori() {
             <div className="justify-content-center row row-cols-auto">
                 {
                     kategori.map((y) =>
-                        <div class="col col-kategori align-self-center d-flex justify-content-center">
-                            <Card className="kategori align-center">
-                                <a href="">
+                        <div class="col col-kategori align-self-center d-flex justify-content-center mb-5">
+                            <Card className="kategori align-center" 
+                            style={{
+                                backgroundColor:"#B36A40", 
+                                border:"B36A40", 
+                                }}>
+                                <a href="" style={{textDecoration:"none"}}>
                                     <div className="d-flex">
                                         <div className="text-kategori text-center">
                                             {/* <Card.Text> */}
-                                                <b className="text-center" style={{textDecoration:"none"}}>{y.nama_kategori}</b>
+                                                <b className="text-center" >{y.nama_kategori}</b>
                                             {/* </Card.Text> */}
                                         </div>
                                     </div>

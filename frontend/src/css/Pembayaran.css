@@ -8,6 +8,7 @@
 .isian-alamat, .isian-pesanan{
     border-left: 3px dashed black;
     margin-left: 16px;
+    width: 90%;
 }
 .textarea-alamat, .file-up{
     margin-left: 50px;
@@ -55,7 +56,7 @@
 .kanan-bayar{
     margin-top: 50px;
     margin-left: 10px;
-    width: 30%;
+    /* width: 30%; */
     
 }
 .card-info{
@@ -80,7 +81,7 @@
 }
 .info-bank-atas{
     background-color: #B36A40;
-    height: 20px;
+    height: 30px;
 }
 .info-bank-bawah{
     padding: 30px;

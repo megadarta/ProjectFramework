@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import '../../css/CreateProduk.css';
+import React from 'react';
+import '../../css/CreateAdmin.css';
 import NavbarAdmin from './NavbarAdmin';
-// import cors from 'cors';
 
-function CreateProduk() {
-    const [produk_nama, setNama] = useState();
-    const [kategori, setKategori] = useState();
-    const [harga, setHarga] = useState();
-    const [produk, setProduk] = useState([]);
-    const [pilkategori, getKategori] = useState([]);
-    const [gambar, setGambar] = useState();
 
-    function submitProduk(e) {
-        e.preventDefault();
-        console.log(produk_nama);
-        console.log(kategori);
-        console.log(harga);
+function CreateAdmin() {
+    // const [produk_nama, setNama] = useState();
+    // const [kategori, setKategori] = useState();
+    // const [harga, setHarga] = useState();
+    // const [produk, setProduk] = useState([]);
+    // const [pilkategori, getKategori] = useState([]);
+    // const [gambar, setGambar] = useState();
 
-        fetch('http://localhost:3001/create-produk', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ nama_produk: produk_nama, kategori, harga, gambar })
-        }).then(res => res.json()).then(data => console.log(data));
-    }
+    // function submitProduk(e) {
+    //     e.preventDefault();
+    //     console.log(produk_nama);
+    //     console.log(kategori);
+    //     console.log(harga);
 
-    useEffect(() => {
-        fetch('http://localhost:3001/produk').then(res => res.json()).then(data =>
-            setProduk(data.results)
-        );
-    })
-    useEffect(() => {
-        fetch('http://localhost:3001/kategori').then(res => res.json()).then(data =>
-            getKategori(data.results)
-        );
-    })
+    //     fetch('http://localhost:3001/create-produk', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({ nama_produk: produk_nama, kategori, harga, gambar })
+    //     }).then(res => res.json()).then(data => console.log(data));
+    // }
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3001/produk').then(res => res.json()).then(data =>
+    //         setProduk(data.results)
+    //     );
+    // })
+    // useEffect(() => {
+    //     fetch('http://localhost:3001/kategori').then(res => res.json()).then(data =>
+    //         getKategori(data.results)
+    //     );
+    // })
 
     return (
         <div className="d-flex">
@@ -48,7 +48,7 @@ function CreateProduk() {
 
                         <div class="d-flex">
                             <div className="nama-listpro">
-                                <h2>List <b>Produk</b></h2>
+                                <h2>List <b>Admin</b></h2>
                             </div>
                             <div class="d-flex icon-atas-produk justify-content-end">
                                 <div><a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons ">&#xE147;</i> <span>Add</span></a>
@@ -61,13 +61,13 @@ function CreateProduk() {
                         <thead className="thead-pesanan">
                             <tr>
                                 <th>Nama</th>
-                                <th>Kategori</th>
-                                <th>Harga</th>
+                                <th>Username</th>
+                                <th>Email</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody className="tbody-pesanan">
-                            {
+                            {/* {
                                 produk.map((x) =>
                                     <tr>
                                         <td>{x.nama_produk}</td>
@@ -80,7 +80,7 @@ function CreateProduk() {
                                             </td>
                                         </td>
                                     </tr>
-                            )}
+                            )} */}
 
                         </tbody>
                     </table>
@@ -92,35 +92,27 @@ function CreateProduk() {
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form onSubmit={submitProduk} method="post">
+                        <form  method="post">
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Produk</h4>
+                                <h4 class="modal-title">Add Admin</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" required onChange={e => setNama(e.target.value)}></input>
+                                    <input type="text" class="form-control"></input>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kategori</label>
-                                    <select onChange={e => setKategori(e.target.value)}>
-                                        <option >Pilih kategori</option>
-                                    {
-                                        pilkategori.map((y) =>
-                                        
-                                            <option value={y.id_kategori}>{y.nama_kategori}</option>
-                                        
-                                    )}
-                                    </select>  
+                                    <label>Username</label>
+                                    <input class="form-control"></input>
                                 </div>
                                 <div class="form-group">
-                                    <label>Harga</label>
-                                    <textarea class="form-control" required onChange={e => setHarga(e.target.value)}></textarea>
+                                    <label>Email</label>
+                                    <input type="text" class="form-control"></input>
                                 </div>
                                 <div class="form-group">
-                                    <label>Gambar</label>
-                                    <input type="text" class="form-control" required onChange={e => setGambar(e.target.value)}></input>
+                                    <label>Password</label>
+                                    <input type="text" class="form-control"></input>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -190,4 +182,4 @@ function CreateProduk() {
     );
 }
 
-export default CreateProduk;
+export default CreateAdmin;
