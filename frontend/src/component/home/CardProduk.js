@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 function CardProduk(kirim) {
     const history = useHistory();
-    const [hasiltotal, setHasiltotal] = useState();
+    const [hasiltotal, setHasiltotal] = useState(kirim.x.harga);
     const [jumlahbeli, setJumlahBeli] = useState(1);
 
     function cekbeli(e) {
@@ -64,12 +64,18 @@ function CardProduk(kirim) {
                                     <a href={`/detail-produk?idproduk=${kirim.x.id_produk}`} style={{ fontWeight: "600", fontSize: "12px", color: 'black' }}>{kirim.nama_produk}</a>
                                 </Card.Title>
                                 <Card.Text className="mt-4">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-kuantitas btn-minus" onClick={kurangjumlah}>-</button>
-                                        <input type="text" class="value-kuantitas" Value={jumlahbeli}></input>
-                                        <button type="button" class="btn btn-kuantitas btn-plus" onClick={tambahjumlah}>+</button>
-                                    </div>
                                     <b style={{ fontWeight: "600", fontSize: "14px", color: 'black' }}>Rp {kirim.x.harga}</b>
+                                    <div className="d-flex mt-2">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-kuantitas btn-minus" onClick={kurangjumlah}>-</button>
+                                    <input type="text" class="value-kuantitas" Value={jumlahbeli}></input>
+                                    <button type="button" class="btn btn-kuantitas btn-plus" onClick={tambahjumlah}>+</button>
+                                </div>
+                                <div className="ml-3 text-kuantitas">
+                                    <div>Sub Total</div>
+                                    <div>{hasiltotal}</div>
+                                </div>
+                            </div>
                                 </Card.Text>
                                 <Button className="btn-beli" style={{ width: "100%", backgroundColor: "#B36A40", border: "#B36A40"}} onClick={cekbeli}>Beli</Button>
                             </Card.Body>

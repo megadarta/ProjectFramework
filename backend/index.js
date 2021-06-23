@@ -39,7 +39,9 @@ app.post('/create-produk', (req, res) => {
     let sql = "INSERT INTO produk SET ?";
     let query = conn.query(sql, data, (err, results) => {
         if (err) throw err;
+        console.log({results:results})
         res.json({results:results});
+        
     });
 });
 app.get('/tampil', (req,res) => {
@@ -114,15 +116,40 @@ app.get('/tampilco', (req,res) => {
     });
 })
 
+app.get('/listpesanan', (req,res) => {
+    let data = { id_produk: req.query.idproduk };
+    let sql = "SELECT * FROM produk WHERE id_produk = " + req.query.idproduk;
+    let query = conn.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json({results:results});
+    });
+})
+
+
+
 app.post("/api/image", upload.single('image'), (req, res) => {
     // console.log(req.file);
-        let data = {file_bayar: req.file.path, id_user: req.body.id_user, status_pembayaran: 1}
+        let data = {file_bayar: req.file.path, id_user: req.body.id_user, status_pembayaran: 1, }
         const sql = "INSERT INTO transaksi SET ?";
         conn.query(sql, data, (err, results) => {
-            if (err) throw err;
+            // console.log(results);
+            // console.log(req.body);
+            // console.log(req.body.tampilproduk);
+            // if (err) throw err;
+            // const sql1 ="INSERT INTO produk_transaksi VALUES ?";
+            // let arry=[]; 
+            // for(let i = 0; i< req.body.tampilproduk.length; i++){
+            //     arry[i] = [results.insertId, tampilproduk[i].id_produk,  req.body.id_user, tampilproduk[i].kuantitas_produk];
+            // }
+            // conn.query1(sql1, (err, results) => {
+            //     if (err) throw err;
+            // })
+            })
+
             res.json({results:results});
-        });
 });
+
+
 
 app.listen(3001, () => {
     console.log('Server is running at port 8000');

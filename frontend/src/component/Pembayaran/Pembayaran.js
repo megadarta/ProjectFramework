@@ -27,18 +27,17 @@ function Pembayaran(kirim) {
         );
     }, [])
 
-    function imageHandler() {
+    function imageHandler(e) {
+        e.preventDefault();
         const imageInput = image.current.files[0];
-        console.log(imageInput);
+        console.log(tampilco);
         var formData = new FormData();
         formData.append('image', imageInput);
         formData.append('id_user', kirim.user.id_user);
+        formData.append('tampilproduk', tampilco);
         fetch(`http://localhost:3001/api/image`, {
             method: 'POST',
-            headers: {
-                'Accept': 'multipart/form-data',
-            },
-            body: formData
+            body: formData 
         }).then(res => res.json()).then(data => {
             console.log(data)
         });

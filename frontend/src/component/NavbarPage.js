@@ -43,7 +43,7 @@ function NavbarPage(kirim) {
                     <a href="/"><Button className="searchbtn searchbar" style={{border: "#B36A40"}}>Go</Button></a>
                 </Form>
                      <Nav className="mx-auto">
-                     <Nav.Link href="/chekout" className="d-flex align-items-center mr-5">
+                     <Nav.Link onClick={klikkeranjang} className="d-flex align-items-center mr-5">
                                         <img
                                             src={gambartas}
                                             width="35px"
@@ -67,7 +67,7 @@ function NavbarPage(kirim) {
                                         </a>
                                     </Nav.Link>
                                     <div className="username p-3">
-                                        Jihan
+                                    {kirim.user?.nama_user}
                                     </div>
                                     <NavDropdown title=
                                             { <Image width="40" height="40" src={logouser} roundedCircle /> }

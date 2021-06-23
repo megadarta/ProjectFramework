@@ -23,10 +23,7 @@ function Chekhout(kirim) {
     }, [])
 
     return (
-
-
         <div>
-
             <NavbarPage user={kirim.user} />
             <div className="container chekout">
                 <div ><a href="/home" className="back-co">Kembali</a></div>
@@ -52,12 +49,7 @@ function Chekhout(kirim) {
                                                 </div>
                                                 <div className="beli-button">
                                                     <div className="d-flex mt-2">
-                                                        <div class="btn-group " role="group" aria-label="Basic example">
-                                                            <button type="button" class="btn btn-kuantitas btn-minus">-</button>
-                                                            <input type="text" class="value-kuantitas" value="3"></input>
-                                                            <button type="button" class="btn btn-kuantitas btn-plus">+</button>
-                                                        </div>
-                                                        <div className="ml-3 text-kuantitas-dibeli">
+                                                        <div className="text-kuantitas-dibeli">
                                                             <div>Sub Total</div>
                                                             <div>{x.kuantitas_produk * x.harga}</div>
                                                             <div display="none">{bayar = bayar + (x.kuantitas_produk * x.harga)}</div>
@@ -66,8 +58,8 @@ function Chekhout(kirim) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="mb-3 status-pembelian d-flex justify-content-center">
-                                                <div>Belum dibayar</div>
+                                            <div className="status-pembelian d-flex justify-content-center">
+                                                <div>Kuanitas : {x.kuantitas_produk}</div>
                                             </div>
                                         </div>
                                     )}
