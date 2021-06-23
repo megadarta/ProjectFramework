@@ -103,21 +103,12 @@ app.get('/tampilkeranjang', (req,res) => {
     let data = { iduser: req.query.iduser };
     let sql = "select * from keranjang join produk on keranjang.id_produk = produk.id_produk where keranjang.id_user = " + req.query.iduser;
     let query = conn.query(sql, (err, results) => {
-<<<<<<< HEAD
-        
-    //let sql2 = "SELECT * FROM produk WHERE produk.id_produk = " + results[0].id_produk;
-    
-    //let query2 = conn.query2(sql2, (err, results) => {
-=======
->>>>>>> 7caae43135caffbc3f9241618c9e7fc349e1e4b3
         if (err) throw err;
         res.json({results:results});
     //});
     })
 })
 
-<<<<<<< HEAD
-=======
 app.get('/tampilco', (req,res) => {
     let data = { iduser: req.query.iduser };
     let sql = "select * from keranjang join produk on keranjang.id_produk = produk.id_produk where keranjang.id_user = " + req.query.iduser;
@@ -162,7 +153,6 @@ app.post("/api/image", upload.single('image'), (req, res) => {
 
 
 
->>>>>>> 7caae43135caffbc3f9241618c9e7fc349e1e4b3
 app.listen(3001, () => {
     console.log('Server is running at port 8000');
   });

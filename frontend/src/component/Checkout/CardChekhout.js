@@ -3,12 +3,6 @@ import '../../css/CardChekhout.css';
 import produk1 from '../../asset/JAKET2.jpg'
 
 function CardChekhout(kirim) {
-<<<<<<< HEAD
-    
-    useEffect(() => {
-        fetch(`http://localhost:3001/tampilkeranjang?iduser=${kirim.user?.id_user}`).then(res => res.json()).then(data => {
-           console.log(data.results);
-=======
     const [tampilkeranjang, setTampilKeranjang] = useState([]);
     const [bayar, setBayar] = useState(0);
 
@@ -16,7 +10,6 @@ function CardChekhout(kirim) {
         fetch(`http://localhost:3001/tampilkeranjang?iduser=${kirim.user?.id_user}`).then(res => res.json()).then(data => {
             setTampilKeranjang(data.results);
             console.log(data.results);
->>>>>>> 7caae43135caffbc3f9241618c9e7fc349e1e4b3
            
         }
 
@@ -29,17 +22,10 @@ function CardChekhout(kirim) {
         {
             tampilkeranjang.map((x) => 
         <div className="CardChekhout justify-content-center d-flex flex-lg-row flex-column">
-<<<<<<< HEAD
-             
-            <div>
-            <div className="img-produk-beli d-flex justify-content-center">
-                <div><img src={produk1}></img></div>
-=======
             
             
             <div className="img-produk-beli d-flex justify-content-center">
                 <div><img src={'http://localhost:3001/' + x.gambar} style={{width: 100}}></img></div>
->>>>>>> 7caae43135caffbc3f9241618c9e7fc349e1e4b3
             </div>
             <div className="keterangan-produk-beli mb-2 mt-2 ml-4 d-flex flex-column justify-content-center align-items-start">
                 <div className="nama-produk-dibeli">
@@ -67,13 +53,8 @@ function CardChekhout(kirim) {
                 <div>Belum dibayar</div>
             </div>
             </div>
-<<<<<<< HEAD
-                
-        </div>
-=======
             )}
             </div>
->>>>>>> 7caae43135caffbc3f9241618c9e7fc349e1e4b3
     );
 }
 
