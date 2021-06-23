@@ -46,7 +46,7 @@ function Chekhout(kirim) {
                                                     <p>{x.nama_produk}</p>
                                                 </div>
                                                 <div className="harga-dibeli" style={{fontSize:"14px"}}>
-                                                    <p>{x.harga}</p>
+                                                    <p>Rp {x.harga}</p>
                                                 </div>
                                                 <div className="beli-button">
                                                     <div className="d-flex mt-2">

@@ -82,23 +82,23 @@ function Pembayaran(kirim) {
                                     <div className="ml-4">
                                         <div className="nama-produk-beli">{x.nama_produk}</div>
                                         <div className="jumlah-produk-beli">Jumlah : {x.kuantitas_produk}</div>
-                                        <div className="total-produk-beli">Total : {x.harga}</div>
+                                        <div className="total-produk-beli">Total : Rp {x.harga}</div>
 
-                                        <div display="none">{bayar = bayar + (x.kuantitas_produk * x.harga)}</div>
+                                        <div display="none">Rp {bayar = bayar + (x.kuantitas_produk * x.harga)}</div>
                                     </div>
                                 </div>
                             )}
                     </div>
 
                     {/* tiga */}
-                    <div className="d-flex tiga">
+                    {/* <div className="d-flex tiga">
                         <div>
                             <img src={tiga} className="icon-pembayaran"></img>
                         </div>
                         <div className="alamat align-self-center">
                             Upload Bukti pembayaran
                         </div>
-                    </div>
+                    </div> */}
                     {/* keterangan3 */}
 
                 </div>
