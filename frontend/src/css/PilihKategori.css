@@ -1,7 +1,7 @@
 .kategori{
     padding: 10PX 20px;
     width: 50%;
-    background-color: #B36A40;
+    background-color: #F47216!important;
 
 }
 
@@ -13,14 +13,19 @@
 
 }
 .text-kategori{
-    margin-left: 20px;
     width: 100%;
-    color: #EAD9C3;
+    color: white;
     font-size: 30px;
 }
-a, a:hover{
-    text-decoration: none;
+
+.text-kategori:hover{
+    text-decoration: none!important;
 }
+
+a, a:hover{
+    text-decoration: none!important; 
+}
+
 .row{
     --bs-gutter-x: 0px!important;
 }

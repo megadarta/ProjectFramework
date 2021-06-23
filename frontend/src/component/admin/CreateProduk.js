@@ -94,7 +94,7 @@ function CreateProduk() {
                     <div class="modal-content">
                         <form onSubmit={submitProduk} method="post">
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Employee</h4>
+                                <h4 class="modal-title">Add Produk</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
@@ -107,7 +107,6 @@ function CreateProduk() {
                                     <select onChange={e => setKategori(e.target.value)}>
                                         <option >Pilih kategori</option>
                                     {
-                                        
                                         pilkategori.map((y) =>
                                         
                                             <option value={y.id_kategori}>{y.nama_kategori}</option>

@@ -2,12 +2,12 @@ import React from 'react';
 import { Form, Navbar, Nav, FormControl, NavDropdown, InputGroup, Button, Image } from 'react-bootstrap';
 import gambar from '../asset/logo2.png';
 import gambartas from '../asset/keranjang.png';
-import logouser from '../asset/logouser.png';
+import mega from '../asset/user.svg';
 import '../css/Navbar.css';
 import swal from 'sweetalert';
 import { useHistory } from 'react-router';
 
-function NavbarPage(kirim) {
+function NavbarPage2(kirim) {
     
     const history = useHistory();
 
@@ -16,18 +16,18 @@ function NavbarPage(kirim) {
     }
     function klikkeranjang(){
         if(sessionStorage.length!=0){        
-            console.log(sessionStorage.length);
-            // swal("susses!", "Anda harus login terlebih dahulu", "error");
-            history.push(`/chekout?iduser=${kirim.user.id_user}`);
+            swal("susses!", "Anda harus login terlebih dahulu", "error");
+            // history.push(`/chekout?iduser=${kirim.user.id_user}`);
         }
         else{
             console.log(sessionStorage);
             swal("Error!", "Anda harus login terlebih dahulu", "error");
         }
     }
+
     return (
         <Navbar className="p-3 dosar-nav" expand="lg" sticky="top">
-            <Navbar.Brand href="/" className="">
+            <Navbar.Brand href="/home2" className="">
                 {/* Ngethrift */}
                 <img
                     src={gambar}
@@ -42,8 +42,9 @@ function NavbarPage(kirim) {
                     <FormControl type="text" placeholder="Search" className="searchtxt searchbar"/>
                     <a href="/"><Button className="searchbtn searchbar" style={{border: "#B36A40"}}>Go</Button></a>
                 </Form>
+                
                      <Nav className="mx-auto">
-                     <Nav.Link onClick={klikkeranjang} className="d-flex align-items-center mr-5">
+                     <Nav.Link  className="d-flex align-items-center mr-5" onClick={klikkeranjang}>
                                         <img
                                             src={gambartas}
                                             width="35px"
@@ -51,7 +52,7 @@ function NavbarPage(kirim) {
                                             className="d-inline-block align-top"
                                             alt="DOSAR"
                                         />
-                                        <a className="ml-2" style={{ position: "relative" }} href="/chekout">
+                                        <a className="ml-2" style={{ position: "relative" }}>
                                             {/* <p className="m-0"><b>Kantong Belanja</b></p> */}
                                             <div className="d-flex justify-content-center align-items-center" style={{ 
                                                 position: "absolute", 
@@ -64,35 +65,21 @@ function NavbarPage(kirim) {
                                             }}>
                                                 
                                             </div> 
-                                        </a>
+                                        </a>    
                                     </Nav.Link>
-<<<<<<< HEAD
-                                    <p className="username-nav">{kirim.user?.nama_user}</p>
-=======
-                                    <div className="username p-3">
-                                    {kirim.user?.nama_user}
+                                    {/* <div className="p-3">{kirim.user?.nama_user}</div> */}
+                                    <div className="d-flex">
+                                        <div className="d-flex justify-content-center align-items-center mr-2">
+                                            <Button href="/login" style={{backgroundColor:"#B66043", borderColor:"#B66043"}}>Login</Button>
+                                        </div>
+                                        <div className="d-flex justify-content-center align-items-center">
+                                            <Button href="/regis" style={{backgroundColor:"#B66043", borderColor:"#B66043"}}>Register</Button>
+                                        </div>
                                     </div>
->>>>>>> 7caae43135caffbc3f9241618c9e7fc349e1e4b3
-                                    <NavDropdown title=
-                                            { <Image width="40" height="40" src={logouser} roundedCircle /> }
-                                            id="basic-nav-dropdown">    
-                                        <NavDropdown.Item href="/transactions">Riwayat Transaksi</NavDropdown.Item>
-                                        <NavDropdown.Item href="/login" >Logout</NavDropdown.Item>
-                                        {/* <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item> */}
-                                    </NavDropdown>
                                 </Nav>
-                            {/* :   <Nav className="mx-auto">
-                                    <Nav.Link href="/login" className="mr-4">
-                                        <Button variant="ijo-outline" style={{width: "90px"}}>Login</Button>
-                                    </Nav.Link>
-                                    <Nav.Link href="/register"><Button variant="ijo">Register</Button></Nav.Link>
-                                </Nav>
-                        : <div style={{width: "269.33px"}} className="mx-auto"></div> */}
-                    {/* } */}
             </Navbar.Collapse>
         </Navbar>
     );
 };
 
-export default NavbarPage;
+export default NavbarPage2;

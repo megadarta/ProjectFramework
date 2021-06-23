@@ -45,7 +45,7 @@ const NavbarAdmin = () => {
               padding: '20px 5px',
             }}
            onClick={logout}>
-            <a href="/login" >Logout</a>
+            <a href="/login" style={{color:"white"}}>Logout</a>
           </div>
         </CDBSidebarFooter>
       </CDBSidebar>
