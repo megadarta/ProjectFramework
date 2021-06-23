@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../css/Login.css';
+import '../../css/Regis.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook } from '@fortawesome/fontawesome-free-brands';
 import bajuu from '../../asset/bajuu.jpg';
@@ -65,7 +65,7 @@ function Login(kirim) {
                     <input onChange={e => setPassword(e.target.value)} type="password" className="form-control" id="password" name="password" placeholder="Password"></input>
 
                     <br></br>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit" name="login">Login</button>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit" name="login">LOGIN</button>
                     <a href="/regis" className="btn btn-lg btn-success btn-block">REGISTER</a>
                     {/* <p>{kirim.user.email}</p> */}
                 </form>

@@ -11,7 +11,7 @@ return (
     
     <NavbarPage user={kirim.user}/>
     <div className="container chekout">
-        <div ><a href="/home" className="back-co">Kembali</a></div>
+        <div ><a href="/" className="back-co">Kembali</a></div>
         <div className="d-flex flex-column justify-content-center ">
             <div className="co-atas d-flex justify-content-center align-items-center">
                 Daftar Belanja
