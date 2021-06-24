@@ -7,41 +7,89 @@ import beli1 from '../../asset/JAKET2.jpg';
 import NavbarPage from '../NavbarPage';
 import Footer from '../Footer';
 import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router';
+import swal from 'sweetalert';
 
 function Pembayaran(kirim) {
-    const [alamat, setAlamat] = useState();
     const [tampilco, setTampilCO] = useState([]);
+    const [tampiluser, setTampilUser] = useState([0]);
     const urlParams = new URLSearchParams(window.location.search);
     const iduser = urlParams.get('iduser');
+    const [alamat, setAlamat] = useState();
+    const [transaksi, setTransaksi] = useState([0]);
     var bayar = 0;
     var ongkir = 10000;
     const image = React.createRef();
+    const history = useHistory();
 
     useEffect(() => {
         fetch(`http://localhost:3001/tampilco?iduser=${iduser}`).then(res => res.json()).then(data => {
             setTampilCO(data.results);
-            console.log(data.results);
-
-        }
-
-        );
+        });
     }, [])
+    useEffect(() =>
+    {
+        fetch(`http://localhost:3001/tampiluser?iduser=${iduser}`).then(res => res.json()).then(data => {
+            setTampilUser(data.results);
+        });
+    }, [])
+
+    function tambahalamat(){
+        fetch('http://localhost:3001/tambahalamat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ alamat: alamat, id_user: kirim.user.id_user })
+                }).then(res => res.json()).then(data => {
+                    // console.log(data)
+                    
+                    swal("Success!", "Alamat berhasil ditambahkan", "success");
+                });
+    }
 
     function imageHandler(e) {
         e.preventDefault();
         const imageInput = image.current.files[0];
-        console.log(tampilco);
+        // console.log(tampilco);
         var formData = new FormData();
         formData.append('image', imageInput);
         formData.append('id_user', kirim.user.id_user);
         formData.append('tampilproduk', tampilco);
-        fetch(`http://localhost:3001/api/image`, {
-            method: 'POST',
-            body: formData 
-        }).then(res => res.json()).then(data => {
-            console.log(data)
-        });
-    }
+        formData.append('alamat', alamat);
+        if(image.current.files[0]==null && tampiluser[0].alamat == null){
+            swal("Error!", "Anda harus upload bukti pembayaran dan mengisi alamat terlebih dahulu", "error");       
+        }
+        
+        else if(image.current.files[0]==null){
+            swal("Error!", "Anda harus upload bukti pembayaran terlebih dahulu", "error");       
+        }
+        else if(tampiluser[0].alamat == null){
+            swal("Error!", "Anda harus mengisikan alamat terlebih dahulu", "error");
+        }
+        else{   
+            fetch(`http://localhost:3001/api/image`, {
+                method: 'POST',
+                body: formData 
+            }).then(res => res.json()).then(data => {
+                console.log(data.results);
+            })
+            .then(fetch(`http://localhost:3001/tampiltransaksi?iduser=${iduser}`).then(res => res.json()).then(data => {
+                console.log(data.results);
+                // console.log(data.results);
+                if(data.results.length==1){
+                    history.push(`/konfirmasi?idtransaksi=${data.results[0].id_transaksi}`);
+                }
+                else{
+                    history.push(`/konfirmasi?idtransaksi=${data.results[data.results.length-1].id_transaksi}`);
+                }
+                
+            }));
+            }
+            // console.log(transaksi);
+            
+        }
+    
     return (
         <div className="full">
             <NavbarPage user={kirim.user} />
@@ -57,11 +105,12 @@ function Pembayaran(kirim) {
                         <div className="alamat align-self-center">
                             Alamat Pengiriman
                         </div>
+                        <button onClick={tambahalamat}>SIMPAN ALAMAT</button>
                     </div>
                     {/* keterangan1 */}
 
                     <div className="isian-alamat">
-                        <textarea class="form-control textarea-alamat" placeholder="isikan alamat" onChange={e => setAlamat(e.target.value)}></textarea>
+                        <textarea class="form-control textarea-alamat" placeholder="isikan alamat" onChange={e => setAlamat(e.target.value)} value={tampiluser[0].alamat}></textarea>
                     </div>
 
                     {/* dua */}

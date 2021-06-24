@@ -16,9 +16,7 @@ function Chekhout(kirim) {
         fetch(`http://localhost:3001/tampilkeranjang?iduser=${iduser}`).then(res => res.json()).then(data => {
             setTampilKeranjang(data.results);
             console.log(data.results);
-
         }
-
         );
     }, [])
 

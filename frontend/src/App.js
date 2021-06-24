@@ -4,6 +4,7 @@ import './App.css';
 import DetailProduk from './component/DetailProduk/DetailProduk';
 import Home from './component/home/Home';
 import Chekhout from './component/Checkout/Chekhout';
+import Riwayat from './component/Checkout/Riwayat';
 import {
   BrowserRouter as Router,
   Switch,
@@ -46,10 +47,13 @@ function App() {
             <Chekhout setUser={setUser} user={user} />
           </Route>
           <Route path="/konfirmasi">
-            <Konfirmasi />
+            <Konfirmasi setUser={setUser} user={user}/>
           </Route>
           <Route path="/pembayaran">
             <Pembayaran setUser={setUser} user={user} />
+          </Route>
+          <Route path="/riwayat">
+            <Riwayat setUser={setUser} user={user} />
           </Route>
           <Route path="/admin">
             <Admin />
