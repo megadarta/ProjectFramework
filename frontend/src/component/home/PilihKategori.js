@@ -31,7 +31,7 @@ function PilihKategori() {
                                     <div className="d-flex">
                                         <div className="text-kategori text-center">
                                             {/* <Card.Text> */}
-                                                <b className="text-center" >{y.nama_kategori}</b>
+                                                <b className="text-center nama-kategori">{y.nama_kategori}</b>
                                             {/* </Card.Text> */}
                                         </div>
                                     </div>

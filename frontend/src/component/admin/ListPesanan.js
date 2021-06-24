@@ -3,6 +3,15 @@ import '../../css/ListPesanan.css';
 import NavbarAdmin from './NavbarAdmin';
 
 function ListPesanan() {
+    // useEffect(() => {
+    //     fetch(`http://localhost:3001/listpesanan`).then(res => res.json()).then(data => {
+    //         setTampilList(data.results);
+    //         console.log(data.results);
+
+    //     }
+
+    //     );
+    // }, [])
     return (
         <div className="d-flex">
             <div class="navbaradmin">

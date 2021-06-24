@@ -118,7 +118,7 @@ function CreateProduk() {
                                     <label>Harga</label>
                                     <textarea class="form-control" required onChange={e => setHarga(e.target.value)}></textarea>
                                 </div>
-                                <div class="form-group">
+                                <div className="upload-bayar">
                                     <label>Gambar</label>
                                     <input type="text" class="form-control" required onChange={e => setGambar(e.target.value)}></input>
                                 </div>
@@ -138,7 +138,7 @@ function CreateProduk() {
                     <div class="modal-content">
                         <form>
                             <div class="modal-header">
-                                <h4 class="modal-title">Edit Employee</h4>
+                                <h4 class="modal-title">Edit Produk</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
@@ -171,7 +171,7 @@ function CreateProduk() {
                     <div class="modal-content">
                         <form>
                             <div class="modal-header">
-                                <h4 class="modal-title">Delete Employee</h4>
+                                <h4 class="modal-title">Delete Product</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">

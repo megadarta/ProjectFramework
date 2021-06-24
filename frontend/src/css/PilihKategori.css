@@ -1,6 +1,7 @@
 .kategori{
     padding: 10PX 20px;
     width: 50%;
+    background-color: #F47216!important;
 }
 
 .kategori:hover{
@@ -19,8 +20,16 @@
 }
 .text-kategori{
     width: 100%;
-    color: #ffffff;
+    color: white;
     font-size: 30px;
+}
+
+.text-kategori:hover{
+    text-decoration: none!important;
+}
+
+a, a:hover{
+    text-decoration: none!important; 
 }
 
 .row{

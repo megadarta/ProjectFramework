@@ -5,6 +5,11 @@
     margin-left: 30px;
     /* margin-bottom: 0px!important; */
 }
+.button-alamat {
+    margin-left: 350px;
+    margin-top: 10px;
+    border-radius: 1em;
+}
 .isian-alamat, .isian-pesanan{
     border-left: 3px dashed black;
     margin-left: 16px;
