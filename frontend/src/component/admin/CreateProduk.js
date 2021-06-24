@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../../css/CreateProduk.css';
 import NavbarAdmin from './NavbarAdmin';
+
+import swal from 'sweetalert';
 // import cors from 'cors';
 
 function CreateProduk() {
@@ -24,6 +26,13 @@ function CreateProduk() {
             },
             body: JSON.stringify({ nama_produk: produk_nama, kategori, harga, gambar })
         }).then(res => res.json()).then(data => console.log(data));
+    }
+
+    function aksihapus(){
+        fetch(`http://localhost:3001/hapusproduk?id=${produk.id_produk}`).then(res => res.json()).then(data =>
+            console.log(data.results)
+        );
+        swal("SUKSES", "Anda berhasil menghapus", "success");
     }
 
     useEffect(() => {
@@ -148,7 +157,15 @@ function CreateProduk() {
                                 </div>
                                 <div class="form-group">
                                     <label>Kategori</label>
-                                    <input type="email" class="form-control" required></input>
+                                    <select onChange={e => setKategori(e.target.value)}>
+                                        <option >Pilih kategori</option>
+                                    {
+                                        pilkategori.map((y) =>
+                                        
+                                            <option value={y.id_kategori}>{y.nama_kategori}</option>
+                                        
+                                    )}
+                                    </select> 
                                 </div>
                                 <div class="form-group">
                                     <label>Harga</label>
@@ -169,14 +186,14 @@ function CreateProduk() {
             <div id="deleteEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action={aksihapus}>
                             <div class="modal-header">
-                                <h4 class="modal-title">Delete Product</h4>
+                                <h4 class="modal-title">Delete Produk</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <p>Are you sure you want to delete these Records?</p>
-                                <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                <p>Apakah kamu yakin?</p>
+                                <p class="text-warning"><small>Tidak bisa dikemabalikan</small></p>
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></input>

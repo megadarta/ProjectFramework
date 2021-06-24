@@ -111,7 +111,7 @@ function Pembayaran(kirim) {
 
                     <div className="isian-alamat">
                         <textarea class="form-control textarea-alamat" placeholder="isikan alamat" onChange={e => setAlamat(e.target.value)} value={tampiluser[0].alamat}></textarea>
-                        <div className="button-alamat">
+                        <div className="button-alamat ml-5" >
                             <button onClick={tambahalamat}>SIMPAN ALAMAT</button>
                         </div>
                     </div>
@@ -169,10 +169,14 @@ function Pembayaran(kirim) {
                                 <div className="ongkos-kirim">Ongkos Kirim : Rp. {ongkir}</div>
                                 <hr></hr>
                                 <div className="total-seluruh">Total Keseluruhan : Rp. {bayar + ongkir}</div>
+                                <hr></hr>
+                                <div className="">
+                                    <span>Upload bukti pembayaran:</span>
+                                </div>
                                 <div className="upload-bayar">
                                     <input type="file" name="image" ref={image} />
                                 </div>
-                                <Button className="btn-beli mt-3 align-center" style={{ width: "50%" }} type="submit">BAYAR</Button>
+                                <Button className="btn-beli mt-3 align-center" style={{ width: "50%", backgroundColor: "#B36A40", borderColor:"#B36A40"}} type="submit">BAYAR</Button>
                             </div>
                         </div>
 
