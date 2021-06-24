@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import '../../css/Regis.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faInstagram, faFacebook} from '@fortawesome/fontawesome-free-brands';
 
 function Regis() {
     const [email, setEmail] = useState();
@@ -25,7 +23,7 @@ function user(e) {
 
 return (
     <body className="body12">
-	<div class="container" id="container">
+	<div class="container12" id="container12">
 		<div class="form-container regis log-in-container">
 				<h1>Register</h1>
                 <br/>

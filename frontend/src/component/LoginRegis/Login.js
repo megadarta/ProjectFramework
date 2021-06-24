@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/Regis.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebook } from '@fortawesome/fontawesome-free-brands';
-import bajuu from '../../asset/bajuu.jpg';
 import { useHistory } from 'react-router';
 
 
@@ -55,7 +52,7 @@ function Login(kirim) {
 
     return (
         <body className="body12">
-        <div className="container" id="container">
+        <div className="container12" id="container12">
             <div className="form-container login log-in-container">
                 <form className="form12" method="post" onSubmit={loginUser}>
                     <h1>Login</h1>
@@ -65,8 +62,8 @@ function Login(kirim) {
                     <input onChange={e => setPassword(e.target.value)} type="password" className="form-control" id="password" name="password" placeholder="Password"></input>
 
                     <br></br>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit" name="login">LOGIN</button>
-                    <a href="/regis" className="btn btn-lg btn-success btn-block">REGISTER</a>
+                    <button className="btn btn-primary regis" type="submit" name="login">LOGIN</button>
+                    <a href="/regis" className="btn btn-success regis">REGISTER</a>
                     {/* <p>{kirim.user.email}</p> */}
                 </form>
             </div>

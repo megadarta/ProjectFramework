@@ -66,13 +66,9 @@ function NavbarPage(kirim) {
                                             </div> 
                                         </a>
                                     </Nav.Link>
-<<<<<<< HEAD
-                                    <p className="username-nav">{kirim.user?.nama_user}</p>
-=======
                                     <div className="username p-3">
                                     {kirim.user?.nama_user}
                                     </div>
->>>>>>> 7caae43135caffbc3f9241618c9e7fc349e1e4b3
                                     <NavDropdown title=
                                             { <Image width="40" height="40" src={logouser} roundedCircle /> }
                                             id="basic-nav-dropdown">    

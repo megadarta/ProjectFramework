@@ -6,21 +6,6 @@ import Footer from '../Footer';
 import CardChekhout from './CardChekhout';
 
 function Chekhout(kirim) {
-<<<<<<< HEAD
-return (
-    <div>
-    
-    <NavbarPage user={kirim.user}/>
-    <div className="container chekout">
-        <div ><a href="/" className="back-co">Kembali</a></div>
-        <div className="d-flex flex-column justify-content-center ">
-            <div className="co-atas d-flex justify-content-center align-items-center">
-                Daftar Belanja
-            </div>
-            <div className="list-dibeli">
-                <div className="produk-dibeli d-flex justify-content-center">
-                    <CardChekhout user={kirim.user}/>
-=======
 
     const [tampilkeranjang, setTampilKeranjang] = useState([]);
     const urlParams = new URLSearchParams(window.location.search);
@@ -81,7 +66,6 @@ return (
                             </div>
                         </div>
                     </div>
->>>>>>> 7caae43135caffbc3f9241618c9e7fc349e1e4b3
                 </div>
 
                 <div className="harga-co d-flex justify-content-between">
