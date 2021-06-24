@@ -16,10 +16,13 @@ return (
             <img src={verif} className="verif"></img>
         </div>
         <div className="text-konfirmasi">
-            <p>Terima kasih Pesananmu akan segera di proses</p>
+            <p>Terima kasih!</p>
+            <p>Pesananmu akan segera diproses</p>
         </div>
         <div className="btn-konfir-class">
-            <Button className="btn-konfir" style={{ width: "100px" }}>OK</Button>
+            <a href="/">
+                <Button className="btn-konfir" style={{ width: "100px", backgroundColor:"#B36A40", border:"#B36A40"}}>OK</Button>
+            </a>
         </div>
         </div>
     </div>

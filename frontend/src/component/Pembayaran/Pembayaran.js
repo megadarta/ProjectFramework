@@ -45,8 +45,7 @@ function Pembayaran(kirim) {
     return (
         <div className="full">
             <NavbarPage user={kirim.user} />
-            <div className="container d-flex flex-lg-row flex-column">
-
+            <div className="container d-flex flex-lg-row flex-column    ">
                 {/* kiri  */}
                 <div className="kiri-upload">
                     {/* satu */}
@@ -61,7 +60,7 @@ function Pembayaran(kirim) {
                     {/* keterangan1 */}
 
                     <div className="isian-alamat">
-                        <textarea class="form-control textarea-alamat" placeholder="isikan alamat" onChange={e => setAlamat(e.target.value)}></textarea>
+                        <textarea class="form-control textarea-alamat" placeholder="Isikan alamat" onChange={e => setAlamat(e.target.value)}></textarea>
                     </div>
 
                     {/* dua */}
@@ -101,7 +100,6 @@ function Pembayaran(kirim) {
                     </div>
                     {/* keterangan3 */}
 
-
                 </div>
 
                 {/* kanan */}
@@ -109,28 +107,29 @@ function Pembayaran(kirim) {
                     <div className="kanan-bayar">
                         <div>
                             <div className="kanan-atas"></div>
-                            <div className="card-info">
+                            <div className="card-info" style={{fontSize:"14px"}}>
                                 <div className="detail-pembayaran">Detail Pembayaran</div>
                                 <hr></hr>
-                                <div className="total-belanja">Total Belanja : Rp. {bayar}</div>
-                                <div className="ongkos-kirim">Ongkos Kirim : Rp. {ongkir}</div>
+                                <div className="ongkos-kirim" style={{fontSize:"14px"}}>Ongkos Kirim : Rp {ongkir}</div>
+                                <div className="total-seluruh" style={{fontSize:"14px"}}>Total Keseluruhan : Rp {bayar + ongkir}</div>
                                 <hr></hr>
-                                <div className="total-seluruh">Total Keseluruhan : Rp. {bayar + ongkir}</div>
                                 <div className="upload-bayar">
                                     <input type="file" name="image" ref={image} />
                                 </div>
-                                <Button className="btn-beli mt-3 align-center" style={{ width: "50%" }} type="submit">BAYAR</Button>
+                                <a href="/konfirmasi">
+                                    <Button className="btn-beli align-center" style={{ width: "50%", backgroundColor:"#B36A40", border:"#B36A40" }} >BAYAR</Button>
+                                </a>
                             </div>
                         </div>
 
                         <div className="bawah-kanan">
                             <div className="info-bank-atas"></div>
-                            <div className="info-bank-bawah">
+                            <div className="info-bank-bawah" style={{fontSize:"14px"}}>
                                 <span>Pembayaraan dapat dilakukan di :</span>
                                 <ul>
-                                    <li>BRI : 192-909-000-999 ( a.n NgethriftYuk )</li>
-                                    <li>Mandiri : 9898-76879-899 (a.n NgethriftYuk )</li>
-                                    <li>BCA : 1298-989-999-888 ( a.n NgethriftYuk )</li>
+                                    <li>BRI : 192-909-000-999 ( a.n Ngethrift )</li>
+                                    <li>Mandiri : 9898-76879-899 (a.n Ngethrift )</li>
+                                    <li>BCA : 1298-989-999-888 ( a.n Ngethrift )</li>
                                 </ul>
                             </div>
 
