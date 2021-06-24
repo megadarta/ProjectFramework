@@ -141,7 +141,19 @@ app.get('/listpesanan', (req, res) => {
     let sql = "select * from transaksi";
     let query = conn.query(sql, (err, results) => {
         if (err) throw err;
-        res.json({ results: results });
+        for(var i=0; i<results.length; i++){
+            let sql2 = "SELECT * from produk_transaksi, produk WHERE id_transaksi= " + results[i].id_transaksi;
+            // console.log(results);
+            let query = conn.query(sql2, (err, hasil) => {
+                // console.log();
+                results.produk=hasil;
+                console.log(results.produk);
+            });
+        }
+        
+        // var result = results.hasil;
+        // console.log(results);
+        res.json({ results: results});
     });
 })
 
@@ -150,12 +162,6 @@ app.get('/tampiltransaksi', (req, res) => {
     let sql = "SELECT * FROM transaksi WHERE id_user = " + req.query.iduser;
     let query = conn.query(sql, (err, results) => {
         if (err) throw err;
-            for(var i=0; i<results.length; i++){
-                let sql2 = "SELECT * from produk_transaksi, produk WHERE id_transaksi= " + results[i].id_transaksi;
-                let query2 = conn.query2(sql2, (err, hasil) => {
-                    
-                });
-            }
         res.json({ results: results });
 
         // console.log(results);

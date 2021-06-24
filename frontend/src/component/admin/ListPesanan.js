@@ -3,11 +3,14 @@ import '../../css/ListPesanan.css';
 import NavbarAdmin from './NavbarAdmin';
 
 function ListPesanan() {
+    const [tampilist, setTampilList] = useState();
+
     useEffect(() => {
         fetch(`http://localhost:3001/listpesanan`
         ).then(res => res.json()).then(data => {
-            // setTampilList(data.results);
+            setTampilList(data.results);
             console.log(data.results);
+            // console.log(data.hasil);
         }
 
         );
@@ -41,23 +44,16 @@ function ListPesanan() {
                                     </tr>
                                 </thead>
                                 <tbody className="tbody-pesanan">
-                                    {
-
-                                    
+                                   
                                     <tr>
-                                        <td>Megy</td>
-                                        <td>mega28102001@Gmail.com</td>
-                                        <td>Lamongan</td>
+                                        <td>x.nama</td>
+                                        <td>x.email</td>
+                                        <td>x.alamat</td>
                                         {/* <td>088996031198</td> */}
                                         <td>
                                             <tr>
                                                 <td>baju</td>
                                                 <td>1</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>celana</td>
-                                                <td>2</td>
                                             </tr>
                                         </td>
                                         <td>file</td>
@@ -68,7 +64,6 @@ function ListPesanan() {
                                             </select>
                                         </td>
                                     </tr>
-                                }
                                 </tbody>
                             </table>
                         </div>

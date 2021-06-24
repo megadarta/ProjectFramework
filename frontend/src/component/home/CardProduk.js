@@ -51,17 +51,27 @@ function CardProduk(kirim) {
         }
     }
 
+    function ceklogin(){
+        if (sessionStorage.length==0) {
+            
+            swal("Error!", "Anda harus login terlebih dahulu", "error");
+        }
+        else{
+            history.push(`/detail-produk?idproduk=${kirim.x.id_produk}`)
+        
+    }};
+
     return (
         <div className="d-flex">
 
             <div className="d-flex card-kirim">
                         <Card className="product" style={{width:"250px"}}>
-                            <a href={`/detail-produk?idproduk=${kirim.x.id_produk}`}>
+                            <a onClick={ceklogin}>
                                 <Card.Img variant="top" src={'http://localhost:3001/' + kirim.x.gambar} className="gambar-kirim" style={{height: "200px", objectFit: "cover"}} />
                             </a>
                             <Card.Body>
                                 <Card.Title className="text-truncate m-0">
-                                    <a href={`/detail-produk?idproduk=${kirim.x.id_produk}`} style={{ fontWeight: "600", fontSize: "12px", color: 'black' }}>{kirim.nama_produk}</a>
+                                    <a onClick={ceklogin} style={{ fontWeight: "600", fontSize: "12px", color: 'black' }}>{kirim.x.nama_produk}</a>
                                 </Card.Title>
                                 <Card.Text className="mt-4">
                                     <b style={{ fontWeight: "600", fontSize: "14px", color: 'black' }}>Rp {kirim.x.harga}</b>

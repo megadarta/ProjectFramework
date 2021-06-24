@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../css/CreateProduk.css';
 import NavbarAdmin from './NavbarAdmin';
+import { useHistory } from 'react-router';
 
 import swal from 'sweetalert';
 // import cors from 'cors';
@@ -12,6 +13,7 @@ function CreateProduk() {
     const [produk, setProduk] = useState([]);
     const [pilkategori, getKategori] = useState([]);
     const [gambar, setGambar] = useState();
+    const history = useHistory();
 
     function submitProduk(e) {
         e.preventDefault();
@@ -45,7 +47,7 @@ function CreateProduk() {
             getKategori(data.results)
         );
     })
-
+    
     return (
         <div className="d-flex">
             <div>
@@ -84,7 +86,7 @@ function CreateProduk() {
                                         <td>{x.harga}</td>
                                         <td>
                                             <td>
-                                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                                <a href="editProdukModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                                 <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                             </td>
                                         </td>
