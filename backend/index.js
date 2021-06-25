@@ -95,6 +95,7 @@ app.post('/hapusproduk', (req, res) => {
     });
 });
 
+
 app.post('/inputkeranjang', (req, res) => {
     let data = { id_user: req.body.id_user, id_produk: req.body.id_produk, kuantitas_produk: req.body.kuantitas_produk };
     let sql = "INSERT INTO keranjang SET ?";

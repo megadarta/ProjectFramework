@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import '../../css/Regis.css';
+import '../../css/Regis.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram, faFacebook} from '@fortawesome/fontawesome-free-brands';
 
@@ -24,20 +24,20 @@ function user(e) {
 
 
 return (
+    <body className="body12">
 	<div class="container" id="container">
 		<div class="form-container regis log-in-container">
 				<h1>Register</h1>
                 <br/>
                 <span>Please Register Your Identity</span>
                 <hr/>
-                <form method="post" onSubmit={user}>
+                <form className="form12" method="post" onSubmit={user}>
 				<div class="social-container">
 				<h1>Register</h1>
                 
                 <span>Please Register Your Identity</span>
                 <hr/>
-					<a href="#" class="social"><FontAwesomeIcon className ='font-awesome' icon={faFacebook} /></a>
-					<a href="#" class="social"><FontAwesomeIcon className ='font-awesome' icon={faInstagram} /></a>
+
 				</div>
 
                 
@@ -60,6 +60,7 @@ return (
 			</div>
 		</div>
 	</div>
+    </body>
 );
 }
 
