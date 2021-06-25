@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../css/CreateProduk.css';
 import NavbarAdmin from './NavbarAdmin';
+import {Button} from 'react-bootstrap';
 
 import swal from 'sweetalert';
 // import cors from 'cors';
@@ -12,6 +13,9 @@ function CreateProduk() {
     const [produk, setProduk] = useState([]);
     const [pilkategori, getKategori] = useState([]);
     const [gambar, setGambar] = useState();
+    const [inputNama, updateNama] = useState();
+    const [inputKategori, updateKategori] = useState();
+    const [inputHarga, updateHarga] = useState();
 
     function submitProduk(e) {
         e.preventDefault();
@@ -28,23 +32,21 @@ function CreateProduk() {
         }).then(res => res.json()).then(data => console.log(data));
     }
 
-    function aksihapus(){
-        fetch(`http://localhost:3001/hapusproduk?id=${produk.id_produk}`).then(res => res.json()).then(data =>
-            console.log(data.results)
-        );
-        swal("SUKSES", "Anda berhasil menghapus", "success");
-    }
+    // function aksihapus(){
+        
+    // }
 
     useEffect(() => {
         fetch('http://localhost:3001/produk').then(res => res.json()).then(data =>
             setProduk(data.results)
         );
-    })
+    },[])
+
     useEffect(() => {
         fetch('http://localhost:3001/kategori').then(res => res.json()).then(data =>
             getKategori(data.results)
         );
-    })
+    },[] )
 
     return (
         <div className="d-flex">
@@ -84,8 +86,13 @@ function CreateProduk() {
                                         <td>{x.harga}</td>
                                         <td>
                                             <td>
-                                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit" style={{color:"#0000ff"}}>&#xE254;</i></a>
-                                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete" style={{color:"#ff0000"}}>&#xE872;</i></a>
+                                                <Button className="delete" data-toggle="modal" onClick={ 
+                                                    e => {fetch(`http://localhost:3001/hapusproduk?id=${x.id_produk}`).then(res => res.json()).then(data => console.log(data.results));
+                                                    swal("SUKSES", "Anda berhasil menghapus", "success");
+                                                    window. location. reload(true);
+                                                    }}>
+                                                    <i class="material-icons" data-toggle="tooltip" title="Delete" style={{color:"#ff0000"}}>&#xE872;</i>
+                                                </Button>
                                             </td>
                                         </td>
                                     </tr>
@@ -141,11 +148,11 @@ function CreateProduk() {
                 </div>
             </div>
 
-            {/* Edit Modal HTML */}
+            {/* Edit Modal HTML
             <div id="editEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form onSubmit={aksiedit}>
                             <div class="modal-header">
                                 <h4 class="modal-title">Edit Produk</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -153,23 +160,21 @@ function CreateProduk() {
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Nama</label>
-                                    <input type="text" class="form-control" required></input>
+                                    <input type="text" class="form-control" onChange={e => updateNama(e.target.value)} required></input>
                                 </div>
                                 <div class="form-group">
                                     <label>Kategori</label>
-                                    <select onChange={e => setKategori(e.target.value)}>
+                                    <select onChange={e => updateKategori(e.target.value)}>
                                         <option >Pilih kategori</option>
                                     {
                                         pilkategori.map((y) =>
-                                        
                                             <option value={y.id_kategori}>{y.nama_kategori}</option>
-                                        
                                     )}
                                     </select> 
                                 </div>
                                 <div class="form-group">
                                     <label>Harga</label>
-                                    <textarea class="form-control" required></textarea>
+                                    <textarea class="form-control" onChange={e => updateHarga(e.target.value)} required></textarea>
                                 </div>
 
                             </div>
@@ -180,13 +185,13 @@ function CreateProduk() {
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Delete Modal HTML */}
             <div id="deleteEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action={aksihapus}>
+                        <form>
                             <div class="modal-header">
                                 <h4 class="modal-title">Delete Produk</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
