@@ -14,6 +14,7 @@ import Konfirmasi from './component/Konfirmasi';
 import Pembayaran from './component/Pembayaran/Pembayaran';
 import Admin from './component/admin/Admin';
 import CreateProduk from './component/admin/CreateProduk';
+import CreateAdmin from './component/admin/CreateAdmin';
 import Login from './component/LoginRegis/Login';
 import Regis from './component/LoginRegis/Regis';
 import Home2 from './component/home/Home2';
@@ -38,7 +39,7 @@ function App() {
               <Home2 />
           </Route>
           <Route path="/home2">
-              <Home2 />
+              <Home />
           </Route>
           <Route path="/detail-produk">
             <DetailProduk setUser={setUser} user={user} />
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route path="/create-produk">
             <CreateProduk />
+          </Route>
+          <Route path="/create-admin">
+            <CreateAdmin />
           </Route>
           <Route path="/login">
             <Login setUser={setUser} />

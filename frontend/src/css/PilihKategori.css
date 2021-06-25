@@ -2,7 +2,13 @@
     padding: 10PX 20px;
     width: 50%;
     background-color: #F47216!important;
+}
 
+.kategori:hover{
+    text-decoration: none;
+    background-color: #FF9245!important;
+    border: none!important;
+    box-shadow: none;
 }
 
 .col-kategori{

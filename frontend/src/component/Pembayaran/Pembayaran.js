@@ -15,7 +15,7 @@ function Pembayaran(kirim) {
     const [tampiluser, setTampilUser] = useState([0]);
     const urlParams = new URLSearchParams(window.location.search);
     const iduser = urlParams.get('iduser');
-    const [alamat, setAlamat] = useState();
+    const [alamat, setAlamat] = useState(tampiluser.alamat);
     const [transaksi, setTransaksi] = useState([0]);
     var bayar = 0;
     var ongkir = 10000;
@@ -35,7 +35,9 @@ function Pembayaran(kirim) {
     }, [])
 
     function tambahalamat(){
-        fetch('http://localhost:3001/tambahalamat', {
+        console.log(alamat);
+        if(alamat!=null) {
+            fetch('http://localhost:3001/tambahalamat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -45,7 +47,13 @@ function Pembayaran(kirim) {
                     // console.log(data)
                     
                     swal("Success!", "Alamat berhasil ditambahkan", "success");
+                    window.location.reload(true);
                 });
+        }
+        else{
+            swal("Error!", "Alamat sudah ditambahkan", "error");
+        }
+        
     }
 
     function imageHandler(e) {
@@ -73,18 +81,18 @@ function Pembayaran(kirim) {
                 body: formData 
             }).then(res => res.json()).then(data => {
                 console.log(data.results);
-            })
-            .then(fetch(`http://localhost:3001/tampiltransaksi?iduser=${iduser}`).then(res => res.json()).then(data => {
-                console.log(data.results);
+                fetch(`http://localhost:3001/tampiltransaksi?iduser=${iduser}`).then(res => res.json()).then(data => {
+                console.log(data.results.length);
                 // console.log(data.results);
-                if(data.results.length==1){
+                if(data.results.length==0){
                     history.push(`/konfirmasi?idtransaksi=${data.results[0].id_transaksi}`);
                 }
                 else{
                     history.push(`/konfirmasi?idtransaksi=${data.results[data.results.length-1].id_transaksi}`);
                 }
                 
-            }));
+            })
+            })
             }
             // console.log(transaksi);
             
@@ -105,13 +113,17 @@ function Pembayaran(kirim) {
                         <div className="alamat align-self-center">
                             Alamat Pengiriman
                         </div>
-                        <button onClick={tambahalamat}>SIMPAN ALAMAT</button>
+                        
                     </div>
                     {/* keterangan1 */}
 
                     <div className="isian-alamat">
-                        <textarea class="form-control textarea-alamat" placeholder="isikan alamat" onChange={e => setAlamat(e.target.value)} value={tampiluser[0].alamat}></textarea>
+                        <textarea class="form-control textarea-alamat" placeholder="isikan alamat lengkap dan no HP" onChange={e => setAlamat(e.target.value)} value={tampiluser[0].alamat}></textarea>
+                        <div className="button-alamat ml-5" >
+                            <Button onClick={tambahalamat}>SIMPAN ALAMAT</Button>
+                        </div>
                     </div>
+                    
 
                     {/* dua */}
                     <div className="d-flex">
@@ -140,14 +152,14 @@ function Pembayaran(kirim) {
                     </div>
 
                     {/* tiga */}
-                    <div className="d-flex tiga">
+                    {/* <div className="d-flex tiga">
                         <div>
                             <img src={tiga} className="icon-pembayaran"></img>
                         </div>
                         <div className="alamat align-self-center">
                             Upload Bukti pembayaran
                         </div>
-                    </div>
+                    </div> */}
                     {/* keterangan3 */}
 
 
@@ -165,10 +177,14 @@ function Pembayaran(kirim) {
                                 <div className="ongkos-kirim">Ongkos Kirim : Rp. {ongkir}</div>
                                 <hr></hr>
                                 <div className="total-seluruh">Total Keseluruhan : Rp. {bayar + ongkir}</div>
+                                <hr></hr>
+                                <div className="">
+                                    <span>Upload bukti pembayaran:</span>
+                                </div>
                                 <div className="upload-bayar">
                                     <input type="file" name="image" ref={image} />
                                 </div>
-                                <Button className="btn-beli mt-3 align-center" style={{ width: "50%" }} type="submit">BAYAR</Button>
+                                <Button className="btn-beli mt-3 align-center" style={{ width: "50%", backgroundColor: "#B36A40", borderColor:"#B36A40"}} type="submit">BAYAR</Button>
                             </div>
                         </div>
 

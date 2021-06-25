@@ -68,7 +68,8 @@ return (
             <img src={verif} className="verif"></img>
         </div>
         <div className="text-konfirmasi">
-            <p>Terima kasih Pesananmu akan segera di proses</p>
+            <p>Terima kasih!</p>
+            <p>Pesananmu akan segera diproses</p>
         </div>
         <div className="btn-konfir-class">
             <Button className="btn-konfir" style={{ width: "100px" }} onClick={simpantransaksi}>OK</Button>

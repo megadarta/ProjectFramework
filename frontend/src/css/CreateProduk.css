@@ -8,3 +8,7 @@
 .kanan-admin-produk{
     width: 100%;
 }
+.delete, .delete:hover{
+    background-color: transparent;
+    border-color: transparent;
+}

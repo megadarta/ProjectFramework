@@ -24,10 +24,10 @@ function Chekhout(kirim) {
         <div>
             <NavbarPage user={kirim.user} />
             <div className="container chekout">
-                <div ><a href="/home" className="back-co">Kembali</a></div>
+                <div className="back mb-1"><a href="/" className="back-co">Kembali</a></div>
                 <div className="d-flex flex-column justify-content-center ">
-                    <div className="co-atas d-flex justify-content-center align-items-center">
-                        Daftar Belanja
+                    <div className="co-atas d-flex justify-content-center align-items-center" style={{fontSize:"20px"}}>
+                        DAFTAR BELANJA
                     </div>
                     <div className="list-dibeli">
                         <div className="produk-dibeli d-flex justify-content-center">
@@ -42,22 +42,21 @@ function Chekhout(kirim) {
                                                 <div className="nama-produk-dibeli">
                                                     <p>{x.nama_produk}</p>
                                                 </div>
-                                                <div className="harga-dibeli">
-                                                    <p>{x.harga}</p>
+                                                <div className="harga-dibeli" style={{fontSize:"14px"}}>
+                                                    <p>Rp {x.harga}</p>
                                                 </div>
                                                 <div className="beli-button">
                                                     <div className="d-flex mt-2">
                                                         <div className="text-kuantitas-dibeli">
-                                                            <div>Sub Total</div>
-                                                            <div>{x.kuantitas_produk * x.harga}</div>
-                                                            <div display="none">{bayar = bayar + (x.kuantitas_produk * x.harga)}</div>
+                                                            <div>Sub Total: Rp {x.kuantitas_produk * x.harga}</div>
+                                                            <div display="none">Total: Rp {bayar = bayar + (x.kuantitas_produk * x.harga)}</div>
                                                             
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="status-pembelian d-flex justify-content-center">
-                                                <div>Kuanitas : {x.kuantitas_produk}</div>
+                                                <div>Kuantitas : {x.kuantitas_produk}</div>
                                             </div>
                                         </div>
                                     )}
@@ -67,12 +66,11 @@ function Chekhout(kirim) {
                 </div>
 
                 <div className="harga-co d-flex justify-content-between">
-                    <div className="ml-3 mt-3 mb-3">
-                        <div>Total</div>
-                        <div>{bayar}</div>
-                    </div>
-                    <div className="ml-3 mt-4 mb-3 mr-4">
-                        <Button href={`/pembayaran?iduser=${kirim.user?.id_user}`} className="btn-co" style={{ width: "100%", backgroundColor: "#B36A40" }}>CHECKOUT</Button>
+                    <div className="ml-4 mt-3 mb-3">
+                        <div className="mt-2">Total Pembelian : Rp {bayar}</div>
+                    </div> 
+                    <div className="mt-3 mb-3 mr-4">
+                        <Button href={`/pembayaran?iduser=${kirim.user?.id_user}`} className="btn-co" style={{ width: "100%", backgroundColor: "#B36A40", border: "#B36A40" }}>CHECKOUT</Button>
                     </div>
                 </div>
 

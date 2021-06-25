@@ -11,6 +11,7 @@ const mysql = require('mysql');
 var cors = require('cors');
 const app = express();
 const multer = require('multer');
+const { isBuffer } = require('util');
 var upload = multer({ dest: 'uploads/' })
 
 var produk = multer({ dest: 'produk/' })
@@ -95,6 +96,23 @@ app.post('/hapusproduk', (req, res) => {
     });
 });
 
+//edit produk
+app.post('/editproduk', (req, res) => {
+    let sql = "UPDATE user SET nama_produk = " + req.body.nama + ", harga = " + req.body.harga + ", AND kategori " + req.body.kategori;
+    let query = conn.query(sql, function(err, results){
+        if (err) throw err;
+        res.json({ success: true, results: results });
+    });
+});
+
+//hapus produk
+app.get('/hapusproduk', (req, res) => {
+    let sql = "DELETE from produk WHERE id_produk = " + req.query.id;
+    let query = conn.query(sql, function(err, results){
+        if (err) throw err;
+        res.json({results: results });
+    });
+});
 
 app.post('/inputkeranjang', (req, res) => {
     let data = { id_user: req.body.id_user, id_produk: req.body.id_produk, kuantitas_produk: req.body.kuantitas_produk };

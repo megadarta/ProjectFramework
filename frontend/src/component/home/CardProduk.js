@@ -73,7 +73,7 @@ function CardProduk(kirim) {
                                 <Card.Title className="text-truncate m-0">
                                     <a onClick={ceklogin} style={{ fontWeight: "600", fontSize: "12px", color: 'black' }}>{kirim.x.nama_produk}</a>
                                 </Card.Title>
-                                <Card.Text className="mt-4">
+                                <Card.Text className="mt-2">
                                     <b style={{ fontWeight: "600", fontSize: "14px", color: 'black' }}>Rp {kirim.x.harga}</b>
                                     <div className="d-flex mt-2">
                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -83,7 +83,7 @@ function CardProduk(kirim) {
                                 </div>
                                 <div className="ml-3 text-kuantitas">
                                     <div>Sub Total</div>
-                                    <div>{hasiltotal}</div>
+                                    <div>Rp {hasiltotal}</div>
                                 </div>
                             </div>
                                 </Card.Text>

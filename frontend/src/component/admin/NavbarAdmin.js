@@ -31,10 +31,13 @@ const NavbarAdmin = () => {
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
             <NavLink exact to="/admin" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="columns">List Pesanan</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="columns">Pesanan</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/create-produk" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table">Produk</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/create-admin" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">Admin</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
