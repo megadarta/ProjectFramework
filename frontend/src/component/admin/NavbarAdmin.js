@@ -15,7 +15,7 @@ const NavbarAdmin = () => {
 }
   return (
     <div
-      style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}
+      style={{ display: 'flex', height: '100%', overflow: 'scroll initial' }}
     >
       <CDBSidebar textColor="#fff" backgroundColor="#B36A40">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>

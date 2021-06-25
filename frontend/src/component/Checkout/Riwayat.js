@@ -9,11 +9,12 @@ function Riwayat(kirim) {
 
     const [transaksi, setTransaksi] = useState([]);
     const urlParams = new URLSearchParams(window.location.search);
-    const idtransaksi = urlParams.get('idtransaksi');
+    const id = urlParams.get('id');
     var bayar = 0;
 
     useEffect(() => {
-        fetch(`http://localhost:3001/transaksi?idtransaksi=${idtransaksi}`).then(res => res.json()).then(data => {
+        console.log(kirim.user);
+        fetch(`http://localhost:3001/transaksi?id=${id}`).then(res => res.json()).then(data => {
             setTransaksi(data.results);
             console.log(data.results);
         }

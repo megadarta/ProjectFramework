@@ -14,20 +14,26 @@ function CreateProduk() {
     const [pilkategori, getKategori] = useState([]);
     const [gambar, setGambar] = useState();
     const history = useHistory();
+    const img = React.createRef();
 
     function submitProduk(e) {
         e.preventDefault();
-        console.log(produk_nama);
-        console.log(kategori);
-        console.log(harga);
+        const imageInput = img.current.files[0];
+        
+        var formData = new FormData();
+        formData.append('img', imageInput);
+        formData.append('kategori', kategori);
+        formData.append('harga', harga);
+        formData.append('nama_produk', produk_nama)
 
-        fetch('http://localhost:3001/create-produk', {
+        fetch('http://localhost:3001/api/gambar', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ nama_produk: produk_nama, kategori, harga, gambar })
-        }).then(res => res.json()).then(data => console.log(data));
+            body: formData 
+        }).then(res => res.json()).then(data => {
+            console.log(data)
+
+        })
+
     }
 
     function aksihapus(){
@@ -41,12 +47,12 @@ function CreateProduk() {
         fetch('http://localhost:3001/produk').then(res => res.json()).then(data =>
             setProduk(data.results)
         );
-    })
+    },[])
     useEffect(() => {
         fetch('http://localhost:3001/kategori').then(res => res.json()).then(data =>
             getKategori(data.results)
         );
-    })
+    },[])
     
     return (
         <div className="d-flex">
@@ -127,11 +133,12 @@ function CreateProduk() {
                                 </div>
                                 <div class="form-group">
                                     <label>Harga</label>
-                                    <textarea class="form-control" required onChange={e => setHarga(e.target.value)}></textarea>
+                                    <input class="form-control" required onChange={e => setHarga(e.target.value)}></input>
                                 </div>
                                 <div class="form-group">
                                     <label>Gambar</label>
-                                    <input type="text" class="form-control" required onChange={e => setGambar(e.target.value)}></input>
+                                    <input type="file" name="img" ref={img} />
+                                    {/* <input type="text" class="form-control" required onChange={e => setGambar(e.target.value)}></input> */}
                                 </div>
                             </div>
                             <div class="modal-footer">

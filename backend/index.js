@@ -12,6 +12,8 @@ var cors = require('cors');
 const app = express();
 const multer = require('multer');
 var upload = multer({ dest: 'uploads/' })
+
+var produk = multer({ dest: 'produk/' })
 // app.options('*', cors());  
 
 //konfigurasi koneksi
@@ -34,16 +36,7 @@ app.use('/assets', express.static(__dirname + '/public'));
 //     credentials: true,
 // }));
 
-app.post('/create-produk', (req, res) => {
-    let data = { nama_produk: req.body.nama_produk, harga: req.body.harga, kategori: req.body.kategori, gambar: req.body.gambar };
-    let sql = "INSERT INTO produk SET ?";
-    let query = conn.query(sql, data, (err, results) => {
-        if (err) throw err;
-        console.log({ results: results })
-        res.json({ results: results });
 
-    });
-});
 app.get('/tampil', (req, res) => {
     let data = { id_produk: req.query.idproduk };
     let sql = "SELECT * FROM produk WHERE id_produk = " + req.query.idproduk;
@@ -137,23 +130,37 @@ app.get('/tampiluser', (req, res) => {
     });
 })
 
-app.get('/listpesanan', (req, res) => {
+app.get('/tampilpes', (req, res) => {
+    let sql = "select nama_user, transaksi.id_transaksi, email, alamat, file_bayar, nama_status, gambar, GROUP_CONCAT(DISTINCT nama_produk SEPARATOR ', ') as listproduk, status_pembayaran from transaksi, produk_transaksi, produk, status_pembayaran, user WHERE transaksi.id_transaksi=produk_transaksi.id_transaksi AND produk_transaksi.id_produk=produk.id_produk AND transaksi.id_user=user.id_user AND transaksi.status_pembayaran=status_pembayaran.id_status GROUP BY transaksi.id_transaksi";
+    let query = conn.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json({ results: results });
+    });
+})
+
+app.get('/notatransaksi', (req, res) => {
     let sql = "select * from transaksi";
     let query = conn.query(sql, (err, results) => {
         if (err) throw err;
-        for(var i=0; i<results.length; i++){
-            let sql2 = "SELECT * from produk_transaksi, produk WHERE id_transaksi= " + results[i].id_transaksi;
-            // console.log(results);
-            let query = conn.query(sql2, (err, hasil) => {
-                // console.log();
-                results.produk=hasil;
-                console.log(results.produk);
-            });
-        }
-        
-        // var result = results.hasil;
-        // console.log(results);
-        res.json({ results: results});
+        res.json({ results: results });
+    });
+})
+
+app.get('/tampilstatus', (req, res) => {
+    let sql = "select * from status_pembayaran";
+    let query = conn.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json({ results: results });
+    });
+})
+
+app.post('/ubahstatus', (req, res) => {
+    console.log(req.body.status);
+    console.log(req.body.id_transaksi);
+    let sql = "UPDATE `transaksi` SET `status_pembayaran`= 2 WHERE id_transaksi = " + req.body.id_transaksi;
+    let query = conn.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json({ results: results });
     });
 })
 
@@ -188,7 +195,7 @@ app.get('/ambilproduknya', (req, res) => {
 })
 
 app.get('/transaksi', (req, res) => {
-    let sql = "SELECT * FROM transaksi, status_pembayaran WHERE id_transaksi = " + req.query.idtransaksi + " AND status_pembayaran.id_status=transaksi.status_pembayaran";
+    let sql = "SELECT * FROM transaksi, status_pembayaran WHERE id_user = " + req.query.id + " AND status_pembayaran.id_status=transaksi.status_pembayaran";
     let query = conn.query(sql, (err, results) => {
         if (err) throw err;
         res.json({ results: results });
@@ -212,10 +219,19 @@ app.post("/api/image", upload.single('image'), (req, res) => {
     const sql = "INSERT INTO transaksi SET ?";
     conn.query(sql, data, (err, results) => {
         res.json({ results: results });
-    
     })
 });
 
+app.post('/api/gambar',  produk.single('img'), (req, res) => {
+    let data = { nama_produk: req.body.nama_produk, harga: req.body.harga, kategori: req.body.kategori, gambar: req.file.path };
+    let sql = "INSERT INTO produk SET ?";
+    let query = conn.query(sql, data, (err, results) => {
+        if (err) throw err;
+        console.log({ results: results })
+        // res.json({ results: results });
+
+    });
+});
 
 app.post('/tambahalamat', (req, res) => {
     // console.log(req.body.alamat);

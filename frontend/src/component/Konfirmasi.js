@@ -54,7 +54,7 @@ function Konfirmasi(kirim) {
                 })
             }
             );     
-            history.push(`/riwayat?idtransaksi=${datatransaksi[0].id_transaksi}`);
+            history.push(`/riwayat?id=${kirim.user?.id_user}`);
     }
 
 return (

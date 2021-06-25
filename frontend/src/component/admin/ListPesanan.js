@@ -1,20 +1,41 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/ListPesanan.css';
 import NavbarAdmin from './NavbarAdmin';
+import { Button } from 'react-bootstrap';
 
 function ListPesanan() {
-    const [tampilist, setTampilList] = useState();
+    const [tampilpes, setTampilpes] = useState([]);
+    const [tampilstatus, setTampilstatus] = useState([]);
+    const [status, setUbahStatus] = useState([]);
+    const [stts, setStatus] = useState([]);
+    const [id, setid] = useState([]);
+
+
 
     useEffect(() => {
-        fetch(`http://localhost:3001/listpesanan`
-        ).then(res => res.json()).then(data => {
-            setTampilList(data.results);
-            console.log(data.results);
-            // console.log(data.hasil);
-        }
-
+        fetch('http://localhost:3001/tampilpes').then(res => res.json()).then(data =>
+            setTampilpes(data.results)
         );
-    }, [])
+    },[])
+
+    useEffect(() => {
+        fetch('http://localhost:3001/tampilstatus',).then(res => res.json()).then(data =>
+            setTampilstatus(data.results)
+        );
+    },[])
+
+    function ubahstatus(){
+        fetch('http://localhost:3001/ubahstatus', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status: stts, id_transaksi:  id})
+        }).then(res => res.json()).then(data =>
+            setUbahStatus(data.results)
+        )
+    }
+
     return (
         <div className="d-flex">
             <div class="navbaradmin">
@@ -37,33 +58,45 @@ function ListPesanan() {
                                         <th>Nama</th>
                                         <th>Email</th>
                                         <th>Address</th>
-                                        {/* <th>Telepon</th> */}
                                         <th>Pesanan</th>
                                         <th>Bukti Pembayaran</th>
-                                        <th>Status</th>
+                                        <th>Status Pembayaran</th>
+                                        <th>Ubah Status</th>
                                     </tr>
                                 </thead>
                                 <tbody className="tbody-pesanan">
-                                   
-                                    <tr>
-                                        <td>x.nama</td>
-                                        <td>x.email</td>
-                                        <td>x.alamat</td>
-                                        {/* <td>088996031198</td> */}
-                                        <td>
+                                    {
+                                        tampilpes.map((x) =>
+
                                             <tr>
-                                                <td>baju</td>
-                                                <td>1</td>
+                                                <td>{x.nama_user}</td>
+                                                <td>{x.email}</td>
+                                                <td>{x.alamat}</td>
+                                                <td>{x.listproduk}</td>
+                                                <td>{x.file_bayar}</td>
+                                                <td>{x.nama_status}</td>
+                                                <td>
+                                                    <Button  onClick={e => {
+                                                                            console.log(x.id_transaksi)
+                                                                            fetch('http://localhost:3001/ubahstatus', {
+                                                                                method: "POST",
+                                                                                headers: {
+                                                                                    'Content-Type': 'application/json',
+                                                                                },
+                                                                                body: JSON.stringify({ id_transaksi:  x.id_transaksi})
+                                                                            }).then(res => res.json()).then(data =>
+                                                                                console.log(data.results)
+                                                                            )
+                                                                            window. location. reload(true)
+                                                                        }}>VERIFIKASI
+                                                        
+                                                    </Button>
+
+                                                   
+                                                </td>
                                             </tr>
-                                        </td>
-                                        <td>file</td>
-                                        <td>
-                                            <select class="form-select select-status-pesanan tbody-pesanan">
-                                                <option value="1">Menunggu</option>
-                                                <option value="2">Terverifikasi</option>
-                                            </select>
-                                        </td>
-                                    </tr>
+                                        )
+                                    }
                                 </tbody>
                             </table>
                         </div>
