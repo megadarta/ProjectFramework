@@ -37,6 +37,7 @@ function CreateProduk() {
             console.log(data)
 
         })
+        window.location.reload(true)
 
     }
 
