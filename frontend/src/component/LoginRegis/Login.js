@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import '../../css/Login.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebook } from '@fortawesome/fontawesome-free-brands';
-import bajuu from '../../asset/bajuu.jpg';
+import '../../css/Regis.css';
 import { useHistory } from 'react-router';
 
+import swal from 'sweetalert';
 
 function Login(kirim) {
     const [email, setEmail] = useState();
@@ -31,14 +29,22 @@ function Login(kirim) {
                     console.log(JSON.parse(sessionStorage.getItem("user")));
                     // kirim.setAuth(data.success);
                     // console.log(user);
+                    
+                    swal("Success!", "Selamat datang", "success");
                     history.push('/');
                 }
                 else {
                     sessionStorage.setItem("user", JSON.stringify(data.results[0]))
                     kirim.setUser(JSON.parse(sessionStorage.getItem("user")));
                     console.log(JSON.parse(sessionStorage.getItem("user")));
+                    
+                    swal("Success!", "Hallo admin", "success");
                     history.push('/admin');
                 }
+            }
+            else{
+                
+                swal("Error!", "Password atau email salah", "error");
             }
         });
 
@@ -55,7 +61,7 @@ function Login(kirim) {
 
     return (
         <body className="body12">
-        <div className="container" id="container">
+        <div className="container12" id="container12">
             <div className="form-container login log-in-container">
                 <form className="form12" method="post" onSubmit={loginUser}>
                     <h1>Login</h1>
@@ -65,8 +71,8 @@ function Login(kirim) {
                     <input onChange={e => setPassword(e.target.value)} type="password" className="form-control" id="password" name="password" placeholder="Password"></input>
 
                     <br></br>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit" name="login">Login</button>
-                    <a href="/regis" className="btn btn-lg btn-success btn-block">REGISTER</a>
+                    <button className="btn btn-primary regis" type="submit" name="login">LOGIN</button>
+                    <a href="/regis" className="">REGISTER</a>
                     {/* <p>{kirim.user.email}</p> */}
                 </form>
             </div>
@@ -74,7 +80,7 @@ function Login(kirim) {
             <div className="overlay-container">
                 <div className="overlay">
                     <div className="overlay-panel overlay-right">
-                        <div className="boxT"><h1>Thrift-In</h1></div>
+                        <div className="boxT"><h1>NgeThrift</h1></div>
 
                         <p></p>
                     </div>

@@ -66,6 +66,7 @@ app.post('/regis', (req, res) => {
     let sql = "INSERT INTO user SET ? ";
     let query = conn.query(sql, data, (err, results) => {
         if (err) throw err;
+        console.log(results);
         res.json({ results: results });
     });
 })
@@ -241,8 +242,8 @@ app.post("/api/image", upload.single('image'), (req, res) => {
     })
 });
 
-app.post('/api/gambar',  produk.single('img'), (req, res) => {
-    let data = { nama_produk: req.body.nama_produk, harga: req.body.harga, kategori: req.body.kategori, gambar: req.file.path };
+app.post('/gambar', (req, res) => {
+    let data = { nama_produk: req.body.nama_produk, harga: req.body.harga, kategori: req.body.kategori, gambar: req.body.gambarr };
     let sql = "INSERT INTO produk SET ?";
     let query = conn.query(sql, data, (err, results) => {
         if (err) throw err;

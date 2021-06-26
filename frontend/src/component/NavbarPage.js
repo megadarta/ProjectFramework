@@ -13,6 +13,7 @@ function NavbarPage(kirim) {
 
     function logout(){
         sessionStorage.removeItem("user");
+        history.push('/login');
     }
     function klikkeranjang(){
         if(sessionStorage.length!=0){        
@@ -73,7 +74,7 @@ function NavbarPage(kirim) {
                                             { <Image width="40" height="40" src={logouser} roundedCircle /> }
                                             id="basic-nav-dropdown">    
                                         <NavDropdown.Item href={`/riwayat?id=${kirim.user?.id_user}`}>Riwayat Transaksi</NavDropdown.Item>
-                                        <NavDropdown.Item href="/login" >Logout</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={logout} >Logout</NavDropdown.Item>
                                         {/* <NavDropdown.Divider />
                                         <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item> */}
                                     </NavDropdown>

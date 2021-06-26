@@ -22,17 +22,15 @@ function CreateProduk() {
 
     function submitProduk(e) {
         e.preventDefault();
-        const imageInput = img.current.files[0];
-        
-        var formData = new FormData();
-        formData.append('img', imageInput);
-        formData.append('kategori', kategori);
-        formData.append('harga', harga);
-        formData.append('nama_produk', produk_nama)
-
-        fetch('http://localhost:3001/api/gambar', {
+        // const imageInput = img.current.files[0];
+        const stringimg = "assets/product7.jpg";
+        console.log(stringimg);
+        fetch('http://localhost:3001/gambar', {
             method: 'POST',
-            body: formData 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ gambarr: stringimg, kategori, harga, nama_produk: produk_nama }) 
         }).then(res => res.json()).then(data => {
             console.log(data)
 
